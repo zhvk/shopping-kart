@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import com.zhvk.shoppingkart.databinding.FragmentBrowseBinding
+import com.zhvk.shoppingkart.databinding.FragmentProductBinding
 import com.zhvk.shoppingkart.model.CartViewModel
 
-class BrowseFragment : Fragment() {
+class ProductFragment : Fragment() {
 
     private val sharedViewModel: CartViewModel by activityViewModels()
 
-    private var _binding: FragmentBrowseBinding? = null
+    private var _binding: FragmentProductBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,7 +23,7 @@ class BrowseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_browse, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product, container, false)
         return binding.root
     }
 
@@ -32,7 +33,7 @@ class BrowseFragment : Fragment() {
         binding.apply {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
-            fragment = this@BrowseFragment
+            fragment = this@ProductFragment
         }
     }
 

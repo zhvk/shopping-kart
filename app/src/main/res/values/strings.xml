@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Shopping Kart</string>
+
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_browse_fragment">Hello browse fragment</string>
+    <string name="hello_product_fragment">Hello product fragment</string>
+    <string name="hello_summary_fragment">Hello summary fragment</string>
+
+    <string name="shop_name">Sound Haven</string>
+    <string name="shop_description">Sound Haven is your destination for premium audio equipment. We offer a carefully selected range of high-end speakers, headphones, amplifiers, and turntables to take your music listening experience to the next level. Come visit us and let our knowledgeable staff guide you to the perfect setup for your home or office.</string>
+    <string name="products_header">Products</string>
 </resources>
