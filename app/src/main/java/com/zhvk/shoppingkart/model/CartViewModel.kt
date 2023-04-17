@@ -1,5 +1,6 @@
 package com.zhvk.shoppingkart.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -7,7 +8,11 @@ import androidx.lifecycle.ViewModel
 import java.text.NumberFormat
 
 private const val SHIPPING_PRICE_PER_ITEM = 25.00
+private const val TAG = "CartViewModel"
 
+/**
+ * Shared ViewModel that handles all Cart business logic
+ */
 class CartViewModel : ViewModel() {
 
     private val _cartItems = MutableLiveData<MutableList<CartItem>>()
@@ -33,7 +38,6 @@ class CartViewModel : ViewModel() {
     }
 
     fun addItem(cartItem: CartItem) {
-
         val searchedItem = _cartItems.value?.singleOrNull { it.product.id == cartItem.product.id }
 
         if (searchedItem != null)
@@ -41,12 +45,12 @@ class CartViewModel : ViewModel() {
         else
             _cartItems.value?.add(cartItem)
 
-
         updatePrice()
     }
 
     fun removeItem(cartItem: CartItem) {
         val searchedItem = _cartItems.value?.singleOrNull { it.product.id == cartItem.product.id }
+
         if (searchedItem != null) {
             if (searchedItem.quantity > 0)
                 searchedItem.quantity--
@@ -86,6 +90,11 @@ class CartViewModel : ViewModel() {
         _subtotalPrice.value = calculatedSubtotalPrice
         _shippingPrice.value = calculatedShippingPrice
         _totalPrice.value = calculatedSubtotalPrice + calculatedShippingPrice
+
+        Log.d(
+            TAG, "Updated price: \n subtotalPrice: ${_subtotalPrice.value} \n shippingPrice: " +
+                    "${_shippingPrice.value} \n totalPrice: ${_totalPrice.value}"
+        )
     }
 
     private fun alreadyInCart(product: Product): Int {

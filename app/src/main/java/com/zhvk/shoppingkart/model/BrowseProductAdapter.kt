@@ -12,6 +12,9 @@ import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.data.DataSource
 import java.text.NumberFormat
 
+/**
+ * Adapter for Products which are shown on the BrowseFragment
+ */
 class BrowseProductAdapter : RecyclerView.Adapter<BrowseProductAdapter.ProductViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {

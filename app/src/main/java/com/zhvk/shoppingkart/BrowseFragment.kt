@@ -13,8 +13,12 @@ import com.zhvk.shoppingkart.databinding.FragmentBrowseBinding
 import com.zhvk.shoppingkart.model.BrowseProductAdapter
 import com.zhvk.shoppingkart.model.CartViewModel
 
+/**
+ * Fragment for browsing all Store Products. This is the first screen on which the user lands.
+ */
 class BrowseFragment : Fragment() {
 
+    // TODO: This is not used at the moment in the BrowseFragment
     private val sharedViewModel: CartViewModel by activityViewModels()
 
     private var _binding: FragmentBrowseBinding? = null
@@ -36,12 +40,14 @@ class BrowseFragment : Fragment() {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
             fragment = this@BrowseFragment
+
+            productsHeaderNumber.text = DataSource.products.size.toString()
+
+            recyclerView.adapter = BrowseProductAdapter()
+            recyclerView.layoutManager = GridLayoutManager(context, 2)
+            // Specify fixed size to improve performance
+            recyclerView.setHasFixedSize(true)
         }
-        binding.productsHeaderNumber.text = DataSource.products.size.toString()
-        binding.recyclerView.adapter = BrowseProductAdapter()
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
-        // Specify fixed size to improve performance
-        binding.recyclerView.setHasFixedSize(true)
     }
 
     override fun onDestroyView() {
