@@ -92,7 +92,10 @@ class ProductFragment : Fragment() {
             productDescription.text = product?.description
             productType.text = product?.type
             productPriceValue.text = NumberFormat.getCurrencyInstance().format(product?.price)
-            if (product?.isAvailable == false) productOutOfStockInfo.visibility = View.GONE
+            if (product?.isAvailable == true) {
+                productOutOfStockInfo.visibility = View.GONE
+                buttonAddToCart.isEnabled = true
+            }
 
             buttonProductUrl.setOnClickListener { searchFor(product?.name) }
             buttonAddToCart.setOnClickListener {
