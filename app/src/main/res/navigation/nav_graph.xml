@@ -25,6 +25,10 @@
         <action
             android:id="@+id/action_productFragment_to_summaryFragment"
             app:destination="@id/summaryFragment" />
+        <argument
+            android:name="productId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"

@@ -25,7 +25,7 @@ object DataSource {
             "These over-ear headphones boast a sleek and sophisticated design, with rich, balanced sound that will transport you to a different world.",
             179.99,
             true,
-            R.drawable.headphones3
+            R.drawable.headphones2
         ),
         Product(
             3,
@@ -34,7 +34,7 @@ object DataSource {
             "These on-ear headphones pack a punch with deep bass and crisp highs, all while being comfortable to wear for extended periods of time.",
             99.99,
             false,
-            R.drawable.headphones2
+            R.drawable.headphones3
         ),
         Product(
             4,
@@ -43,7 +43,7 @@ object DataSource {
             "These wireless headphones offer incredible sound quality and comfort, making them the perfect choice for music lovers who demand the best.",
             200.00,
             true,
-            R.drawable.headphones2
+            R.drawable.headphones4
         ),
         Product(
             5,
@@ -52,7 +52,7 @@ object DataSource {
             "These headphones are specifically designed for bassheads, with powerful, deep bass that will make your music come alive.",
             129.99,
             true,
-            R.drawable.headphones2
+            R.drawable.headphones5
         ),
         Product(
             6,
@@ -61,7 +61,7 @@ object DataSource {
             "These noise-cancelling headphones provide a pure, unadulterated listening experience, with no interruptions or distractions.",
             199.99,
             false,
-            R.drawable.headphones2
+            R.drawable.headphones6
         ),
         Product(
             7,
@@ -70,7 +70,7 @@ object DataSource {
             "These over-ear headphones offer a cloud-like comfort while delivering crystal-clear sound, perfect for long listening sessions.",
             279.99,
             true,
-            R.drawable.headphones2
+            R.drawable.headphones7
         ),
         Product(
             8,
@@ -79,7 +79,7 @@ object DataSource {
             "These noise-cancelling headphones are engineered to provide a professional-grade audio experience, with crystal-clear sound that's perfect for studio use.",
             449.99,
             true,
-            R.drawable.headphones2
+            R.drawable.headphones8
         ),
         Product(
             9,
@@ -88,7 +88,7 @@ object DataSource {
             "These headphones deliver high-definition sound that is unparalleled in clarity and richness, letting you hear every detail of your favorite songs.",
             149.99,
             false,
-            R.drawable.headphones2
+            R.drawable.headphones9
         ),
         Product(
             10,
@@ -97,7 +97,7 @@ object DataSource {
             "These wireless earbuds deliver crystal-clear audio with a stunningly sleek design, perfect for anyone who wants to listen to their music in style.",
             129.99,
             true,
-            R.drawable.headphones2
+            R.drawable.headphones10
         )
     )
 }

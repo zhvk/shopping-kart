@@ -11,6 +11,6 @@ data class Product(
     val type: String,
     val description: String,
     val price: Double,
-    val availability: Boolean,
+    val isAvailable: Boolean,
     @DrawableRes val imageResourceId: Int
 )
