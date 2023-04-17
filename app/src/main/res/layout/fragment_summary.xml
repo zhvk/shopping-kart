@@ -53,13 +53,61 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recycler_view" />
 
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/delivery_location_wrapper"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:onClick="@{() -> fragment.showLocationPickerDialog()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/delivery_location_header" />
+                app:layout_constraintTop_toBottomOf="@id/delivery_location_header">
+
+                <ImageView
+                    android:id="@+id/delivery_location_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@color/gray1"
+                    android:padding="12dp"
+                    android:src="@drawable/round_location"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/delivery_location_label_1"
+                    style="@style/TextAppearance.ShoppingKart.NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@{@string/location(viewModel.address.streetNumber, viewModel.address.streetName)}"
+                    app:layout_constraintStart_toEndOf="@id/delivery_location_image"
+                    app:layout_constraintTop_toTopOf="@id/delivery_location_image"
+                    tools:text="19A, George Washington St." />
+
+                <TextView
+                    android:id="@+id/delivery_location_label_2"
+                    style="@style/TextAppearance.ShoppingKart.NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/location(viewModel.address.postalCode, viewModel.address.city)}"
+                    app:layout_constraintBottom_toBottomOf="@id/delivery_location_image"
+                    app:layout_constraintStart_toEndOf="@id/delivery_location_image"
+                    app:layout_constraintTop_toBottomOf="@id/delivery_location_label_1"
+                    tools:text="91732, Dry Creek" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/round_navigate_next"
+                    app:layout_constraintBottom_toBottomOf="@id/delivery_location_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/delivery_location_image" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/payment_method_header"
@@ -72,13 +120,61 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/delivery_location_wrapper" />
 
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/payment_method_wrapper"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:onClick="@{() -> fragment.showPaymentPickerDialog()}"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/payment_method_header" />
+                app:layout_constraintTop_toBottomOf="@id/payment_method_header">
+
+                <ImageView
+                    android:id="@+id/payment_method_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@color/gray1"
+                    android:padding="12dp"
+                    android:src="@drawable/round_payment"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/payment_method_label_1"
+                    style="@style/TextAppearance.ShoppingKart.NormalText.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="VISA Inspire"
+                    app:layout_constraintStart_toEndOf="@id/payment_method_image"
+                    app:layout_constraintTop_toTopOf="@id/payment_method_image"
+                    tools:text="VISA Inspire" />
+
+                <TextView
+                    android:id="@+id/payment_method_label_2"
+                    style="@style/TextAppearance.ShoppingKart.NormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="****-1234"
+                    app:layout_constraintBottom_toBottomOf="@id/payment_method_image"
+                    app:layout_constraintStart_toEndOf="@id/payment_method_image"
+                    app:layout_constraintTop_toBottomOf="@id/payment_method_label_1"
+                    tools:text="****-1234" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/round_navigate_next"
+                    app:layout_constraintBottom_toBottomOf="@id/payment_method_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/payment_method_image" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/order_info_header"
@@ -108,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:text="@{viewModel.subtotalPrice}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/subtotal_price_label"
                 tools:text="$199.00" />
@@ -129,6 +226,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:text="@{viewModel.shippingPrice}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/shipping_price_label"
                 tools:text="$20.00" />
@@ -150,6 +248,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:text="@{viewModel.totalPrice}"
                 app:layout_constraintBottom_toBottomOf="@id/total_price_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="$219.00" />
@@ -163,7 +262,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
-                android:text="@string/checkout"
+                android:text="@{@string/checkout_with_price(viewModel.totalPrice)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

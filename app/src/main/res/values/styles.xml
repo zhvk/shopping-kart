@@ -21,6 +21,11 @@
         <item name="android:textAppearance">?attr/textAppearanceBody2</item>
     </style>
 
+    <!-- Normal text bold -->
+    <style name="TextAppearance.ShoppingKart.NormalText.Bold" parent="TextAppearance.ShoppingKart.NormalText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- Out of stock / red text -->
     <style name="TextAppearance.ShoppingKart.RedText" parent="TextAppearance.ShoppingKart.NormalText">
         <item name="android:textColor">@color/outOfStockRed</item>

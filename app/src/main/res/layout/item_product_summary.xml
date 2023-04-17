@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/item_name"
-        style="@style/TextAppearance.ShoppingKart.Header1"
+        style="@style/TextAppearance.ShoppingKart.NormalText.Bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

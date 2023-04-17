@@ -33,6 +33,9 @@ class CartViewModel : ViewModel() {
         NumberFormat.getCurrencyInstance().format(it)
     }
 
+    private val _address = MutableLiveData<UserAddress>()
+    val address: LiveData<UserAddress> get() = _address
+
     init {
         resetOrder()
     }
@@ -71,11 +74,18 @@ class CartViewModel : ViewModel() {
         return cartSize
     }
 
+    fun setAddress(address: UserAddress) {
+        _address.value = address
+    }
+
     private fun resetOrder() {
         _cartItems.value = mutableListOf<CartItem>()
         _subtotalPrice.value = 0.0
         _shippingPrice.value = 0.0
         _totalPrice.value = 0.0
+        _address.value = UserAddress(
+            "George Washington St.", "19A", "91732", "Dry Creek"
+        )
     }
 
     private fun updatePrice() {

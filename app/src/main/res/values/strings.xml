@@ -16,9 +16,13 @@
     <string name="subtotal">Subtotal</string>
     <string name="shipping_cost">Shipping Cost</string>
     <string name="total">Total</string>
-    <string name="checkout">Checkout (%s)</string>
+    <string name="checkout">Checkout</string>
+    <string name="checkout_with_price">Checkout (%s)</string>
     <string name="shipping_price_disclaimer">Shipping price will be calculated on checkout</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="out_of_stock_short">Out of stock</string>
     <string name="out_of_stock_long">This item is currently out of stock</string>
+    <string name="location">%1$s, %2$s</string>
+    <string name="change_location">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
