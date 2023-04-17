@@ -10,12 +10,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.zhvk.shoppingkart.data.DataSource
 import com.zhvk.shoppingkart.databinding.FragmentSummaryBinding
-import com.zhvk.shoppingkart.model.BrowseProductAdapter
 import com.zhvk.shoppingkart.model.CartViewModel
 
 /**
