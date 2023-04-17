@@ -26,6 +26,20 @@
         <item name="android:textColor">@color/outOfStockRed</item>
     </style>
 
+    <!-- Price text regular -->
+    <style name="TextAppearance.ShoppingKart.PriceText.Regular" parent="Widget.MaterialComponents.TextView">
+<!--        TODO -->
+    </style>
+
+    <!-- Price text bold -->
+    <style name="TextAppearance.ShoppingKart.PriceText.Big" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.ShoppingKart.Button" parent="Widget.AppCompat.Button">
+<!--        TODO -->
+    </style>
+
     <!-- OTHER -->
 
     <!-- Final price TextView style -->

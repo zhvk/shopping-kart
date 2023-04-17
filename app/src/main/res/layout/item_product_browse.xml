@@ -64,6 +64,6 @@
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/item_price"
-        tools:text="Out of stock" />
+        android:text="@string/out_of_stock_short" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

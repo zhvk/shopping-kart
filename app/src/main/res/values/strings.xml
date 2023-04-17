@@ -9,4 +9,16 @@
     <string name="shop_name">Sound Haven</string>
     <string name="shop_description">Sound Haven is your destination for premium audio equipment. We offer a carefully selected range of high-end speakers, headphones, amplifiers, and turntables to take your music listening experience to the next level. Come visit us and let our knowledgeable staff guide you to the perfect setup for your home or office.</string>
     <string name="products_header">Products</string>
+    <string name="my_cart_header">My Cart</string>
+    <string name="delivery_location_header">Delivery Location</string>
+    <string name="payment_method_header">Payment Method</string>
+    <string name="order_info_header">Order Info</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="shipping_cost">Shipping Cost</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout (%s)</string>
+    <string name="shipping_price_disclaimer">Shipping price will be calculated on checkout</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="out_of_stock_short">Out of stock</string>
+    <string name="out_of_stock_long">This item is currently out of stock</string>
 </resources>
