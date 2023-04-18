@@ -119,7 +119,7 @@ class ProductFragment : Fragment() {
     private fun showSnackbar() {
         Snackbar.make(requireView(), "Product added to Cart", Snackbar.LENGTH_LONG)
             .setAction("Undo") {
-                sharedViewModel.removeItem(CartItem(product!!, 1))
+                sharedViewModel.reduceItemQuantity(CartItem(product!!, 1))
             }
             .show()
     }

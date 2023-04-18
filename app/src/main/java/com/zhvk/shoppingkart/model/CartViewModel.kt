@@ -13,7 +13,7 @@ private const val TAG = "CartViewModel"
 /**
  * Shared ViewModel that handles all Cart business logic
  */
-class CartViewModel : ViewModel() {
+class CartViewModel : ViewModel(), CartItemListener {
 
     private val _cartItems = MutableLiveData<MutableList<CartItem>>()
     val cartItems: LiveData<MutableList<CartItem>> get() = _cartItems
@@ -40,28 +40,21 @@ class CartViewModel : ViewModel() {
         resetOrder()
     }
 
-    fun addItem(cartItem: CartItem) {
-        val searchedItem = _cartItems.value?.singleOrNull { it.product.id == cartItem.product.id }
-
-        if (searchedItem != null)
-            searchedItem.quantity++
-        else
-            _cartItems.value?.add(cartItem)
-
-        updatePrice()
+    override fun onReduceQuantityClicked(cartItem: CartItem) {
+        reduceItemQuantity(cartItem)
     }
 
-    fun removeItem(cartItem: CartItem) {
+    override fun onIncreaseQuantityClicked(cartItem: CartItem) {
+        addItem(cartItem)
+    }
+
+    override fun onDeleteItemClicked(cartItem: CartItem) {
+        removeItemFromCart(cartItem)
+    }
+
+    fun getItemQuantity(cartItem: CartItem): Int {
         val searchedItem = _cartItems.value?.singleOrNull { it.product.id == cartItem.product.id }
-
-        if (searchedItem != null) {
-            if (searchedItem.quantity > 0)
-                searchedItem.quantity--
-            else
-                _cartItems.value?.remove(cartItem)
-        }
-
-        updatePrice()
+        return searchedItem?.quantity ?: 0
     }
 
     fun getCartSize(): Int {
@@ -76,6 +69,35 @@ class CartViewModel : ViewModel() {
 
     fun setAddress(address: UserAddress) {
         _address.value = address
+    }
+
+    fun addItem(cartItem: CartItem) {
+        val searchedItem = _cartItems.value?.singleOrNull { it.product.id == cartItem.product.id }
+
+        if (searchedItem != null)
+            searchedItem.quantity++
+        else
+            _cartItems.value?.add(cartItem)
+
+        updatePrice()
+    }
+
+    fun reduceItemQuantity(cartItem: CartItem) {
+        val searchedItem = _cartItems.value?.singleOrNull { it.product.id == cartItem.product.id }
+
+        if (searchedItem != null) {
+            if (searchedItem.quantity > 0)
+                searchedItem.quantity--
+            else
+                _cartItems.value?.remove(cartItem)
+        }
+
+        updatePrice()
+    }
+
+    private fun removeItemFromCart(cartItem: CartItem) {
+        _cartItems.value?.remove(cartItem)
+        updatePrice()
     }
 
     private fun resetOrder() {

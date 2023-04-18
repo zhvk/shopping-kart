@@ -42,7 +42,7 @@
     </style>
 
     <style name="Widget.ShoppingKart.Button" parent="Widget.AppCompat.Button">
-<!--        TODO -->
+        <item name="android:background">@drawable/button_custom_blue</item>
     </style>
 
     <style name="Widget.ShoppingKart.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">

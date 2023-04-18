@@ -10,12 +10,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.textfield.TextInputLayout
 import com.zhvk.shoppingkart.databinding.FragmentSummaryBinding
 import com.zhvk.shoppingkart.model.CartViewModel
-import com.zhvk.shoppingkart.model.UserAddress
-import kotlinx.coroutines.NonCancellable.cancel
+import com.zhvk.shoppingkart.model.SummaryProductAdapter
+
+private const val TAG = "SummaryFragment"
 
 /**
  * Fragment displaying order summary and checkout.
@@ -43,12 +42,18 @@ class SummaryFragment : Fragment() {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
             fragment = this@SummaryFragment
+            adapter = SummaryProductAdapter(sharedViewModel)
 
-//            recyclerView.adapter = BrowseSummaryAdapter()
-            recyclerView.layoutManager = LinearLayoutManager(context)
-            // Specify fixed size to improve performance
             recyclerView.setHasFixedSize(true)
         }
+
+
+        // TODO: Find a better solution
+//        val nameObserver = Observer<MutableList<CartItem>> { newMutableList ->
+//            summaryAdapter.updateData(newMutableList.toList())
+//            Log.d(TAG, "321")
+//        }
+//        sharedViewModel.cartItems.observe(viewLifecycleOwner, nameObserver)
     }
 
     override fun onDestroyView() {

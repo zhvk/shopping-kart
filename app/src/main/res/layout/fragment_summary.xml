@@ -8,10 +8,12 @@
         <variable
             name="viewModel"
             type="com.zhvk.shoppingkart.model.CartViewModel" />
-
         <variable
             name="fragment"
             type="com.zhvk.shoppingkart.SummaryFragment" />
+        <variable
+            name="adapter"
+            type="com.zhvk.shoppingkart.model.SummaryProductAdapter" />
     </data>
 
     <ScrollView
@@ -38,9 +40,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:setAdapter="@{adapter}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/my_cart_header" />
+<!--                app:submitList="@{viewModel.movieList}"-->
 
             <TextView
                 android:id="@+id/delivery_location_header"

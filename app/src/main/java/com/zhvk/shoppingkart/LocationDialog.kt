@@ -4,17 +4,12 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.google.android.material.textfield.TextInputLayout
 import com.zhvk.shoppingkart.databinding.DialogLocationEntryBinding
 import com.zhvk.shoppingkart.model.CartViewModel
-import com.zhvk.shoppingkart.model.UserAddress
 
 // TODO
 class LocationDialog : DialogFragment() {
