@@ -11,8 +11,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.textfield.TextInputLayout
 import com.zhvk.shoppingkart.databinding.FragmentSummaryBinding
 import com.zhvk.shoppingkart.model.CartViewModel
+import com.zhvk.shoppingkart.model.UserAddress
+import kotlinx.coroutines.NonCancellable.cancel
 
 /**
  * Fragment displaying order summary and checkout.
@@ -53,38 +56,30 @@ class SummaryFragment : Fragment() {
         _binding = null
     }
 
+    // TODO
     fun showLocationPickerDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Select new location")
-        builder.setMessage("Select new location")
-        //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
-
-        builder.setPositiveButton(R.string.change_location) { dialog: DialogInterface, which: Int ->
-            Toast.makeText(requireContext(),
-                android.R.string.yes, Toast.LENGTH_SHORT).show()
-        }
-
-        builder.setNegativeButton(R.string.cancel) { dialog: DialogInterface, which: Int ->
-            Toast.makeText(requireContext(),
-                android.R.string.no, Toast.LENGTH_SHORT).show()
-        }
-        builder.show()
+        val dialog = LocationDialog()
+        dialog.show(parentFragmentManager, "locationFragmentDialog")
     }
 
+    // TODO
     fun showPaymentPickerDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Select preferred way of payment")
-        builder.setMessage("Select preferred way of payment")
         //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
 
         builder.setPositiveButton(R.string.change_location) { dialog: DialogInterface, which: Int ->
-            Toast.makeText(requireContext(),
-                android.R.string.yes, Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                android.R.string.yes, Toast.LENGTH_SHORT
+            ).show()
         }
 
         builder.setNegativeButton(R.string.cancel) { dialog: DialogInterface, which: Int ->
-            Toast.makeText(requireContext(),
-                android.R.string.no, Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                android.R.string.no, Toast.LENGTH_SHORT
+            ).show()
         }
         builder.show()
     }

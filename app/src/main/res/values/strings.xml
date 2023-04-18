@@ -25,4 +25,8 @@
     <string name="location">%1$s, %2$s</string>
     <string name="change_location">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="hint_street_name">Street name</string>
+    <string name="hint_street_number">Street number</string>
+    <string name="hint_postal_code">Postal code</string>
+    <string name="hint_city">City</string>
 </resources>

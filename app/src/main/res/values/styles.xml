@@ -45,6 +45,10 @@
 <!--        TODO -->
     </style>
 
+    <style name="Widget.ShoppingKart.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+<!--        TODO -->
+    </style>
+
     <!-- OTHER -->
 
     <!-- Final price TextView style -->
