@@ -13,7 +13,7 @@ private const val TAG = "CartViewModel"
 /**
  * Shared ViewModel that handles all Cart business logic
  */
-class CartViewModel : ViewModel(), CartItemListener {
+class CartViewModel : ViewModel() {
 
     private val _cartItems = MutableLiveData<MutableList<CartItem>>()
     val cartItems: LiveData<MutableList<CartItem>> get() = _cartItems
@@ -38,18 +38,6 @@ class CartViewModel : ViewModel(), CartItemListener {
 
     init {
         resetOrder()
-    }
-
-    override fun onReduceQuantityClicked(cartItem: CartItem) {
-        reduceItemQuantity(cartItem)
-    }
-
-    override fun onIncreaseQuantityClicked(cartItem: CartItem) {
-        addItem(cartItem)
-    }
-
-    override fun onDeleteItemClicked(cartItem: CartItem) {
-        removeItemFromCart(cartItem)
     }
 
     fun getItemQuantity(cartItem: CartItem): Int {
@@ -95,9 +83,11 @@ class CartViewModel : ViewModel(), CartItemListener {
         updatePrice()
     }
 
-    private fun removeItemFromCart(cartItem: CartItem) {
+    fun removeItemFromCart(cartItem: CartItem) {
         _cartItems.value?.remove(cartItem)
         updatePrice()
+
+        Log.d(TAG, "_totalPrice: $_totalPrice")
     }
 
     private fun resetOrder() {

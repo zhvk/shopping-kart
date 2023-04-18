@@ -8,15 +8,13 @@
         <variable
             name="viewModel"
             type="com.zhvk.shoppingkart.model.CartViewModel" />
+
         <variable
             name="fragment"
             type="com.zhvk.shoppingkart.SummaryFragment" />
-        <variable
-            name="adapter"
-            type="com.zhvk.shoppingkart.model.SummaryProductAdapter" />
     </data>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -39,13 +37,13 @@
                 android:id="@+id/recycler_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginVertical="8dp"
+                android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:setAdapter="@{adapter}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_cart_header" />
-<!--                app:submitList="@{viewModel.movieList}"-->
+                app:layout_constraintTop_toBottomOf="@id/my_cart_header"
+                tools:listitem="@layout/item_product_summary" />
 
             <TextView
                 android:id="@+id/delivery_location_header"
@@ -130,8 +128,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:onClick="@{() -> fragment.showPaymentPickerDialog()}"
                 android:layout_marginTop="8dp"
+                android:onClick="@{() -> fragment.showPaymentPickerDialog()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/payment_method_header">
@@ -276,6 +274,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

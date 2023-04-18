@@ -42,18 +42,9 @@ class SummaryFragment : Fragment() {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
             fragment = this@SummaryFragment
-            adapter = SummaryProductAdapter(sharedViewModel)
 
-            recyclerView.setHasFixedSize(true)
+            recyclerView.adapter = SummaryProductAdapter(sharedViewModel)
         }
-
-
-        // TODO: Find a better solution
-//        val nameObserver = Observer<MutableList<CartItem>> { newMutableList ->
-//            summaryAdapter.updateData(newMutableList.toList())
-//            Log.d(TAG, "321")
-//        }
-//        sharedViewModel.cartItems.observe(viewLifecycleOwner, nameObserver)
     }
 
     override fun onDestroyView() {
