@@ -12,7 +12,7 @@ Sound Haven is a simple shopping cart Android native mobile app developed in Kot
 * Payment method change
 
 ## Screenshots
-![Browse screen](https://i.imgur.com/o4MUrTM.png)
-![Product screen](https://i.imgur.com/iuHTARt.png)
-![Product screen](https://i.imgur.com/ouXY7xc.png)
-![Checkout screen](https://i.imgur.com/K54ozJ2.png)
+<img src="https://i.imgur.com/o4MUrTM.png" width="100">
+<img src="https://i.imgur.com/iuHTARt.png" width="100">
+<img src="https://i.imgur.com/ouXY7xc.png" width="100">
+<img src="https://i.imgur.com/K54ozJ2.png" width="100">
