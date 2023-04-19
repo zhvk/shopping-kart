@@ -1,13 +1,14 @@
 package com.zhvk.shoppingkart.model
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.zhvk.shoppingkart.data.DataSource
 import java.text.NumberFormat
 
-private const val SHIPPING_PRICE_PER_ITEM = 25.00
 private const val TAG = "CartViewModel"
 
 /**
@@ -55,6 +56,11 @@ class CartViewModel : ViewModel() {
         return cartSize
     }
 
+    fun checkoutButtonVisibility(): Int {
+        if (_cartItems.value?.size != 0) return View.VISIBLE
+        return View.GONE
+    }
+
     fun setAddress(address: UserAddress) {
         _address.value = address
     }
@@ -90,6 +96,15 @@ class CartViewModel : ViewModel() {
         Log.d(TAG, "_totalPrice: $_totalPrice")
     }
 
+    fun getOrderString(): String {
+        val sb = StringBuilder()
+        for (item in cartItems.value!!) {
+            sb.append("* Product: ${item.product.name}, quantity: ${item.quantity}, price: $${item.product.price}\n")
+        }
+        sb.append("---\n").append("Total price: ${totalPrice.value}")
+        return sb.toString()
+    }
+
     private fun resetOrder() {
         _cartItems.value = mutableListOf<CartItem>()
         _subtotalPrice.value = 0.0
@@ -98,6 +113,9 @@ class CartViewModel : ViewModel() {
         _address.value = UserAddress(
             "George Washington St.", "19A", "91732", "Dry Creek"
         )
+
+        // TODO: Remove this
+        addRandomItems(5)
     }
 
     private fun updatePrice() {
@@ -106,7 +124,8 @@ class CartViewModel : ViewModel() {
 
         for (item in _cartItems.value!!) {
             calculatedSubtotalPrice += item.product.price * item.quantity
-            calculatedShippingPrice += SHIPPING_PRICE_PER_ITEM * item.quantity
+            // TODO: Calculate shipping price based on some data from the product (e.g. weight)
+            calculatedShippingPrice += item.product.price * 0.25 * item.quantity
         }
 
         _subtotalPrice.value = calculatedSubtotalPrice
@@ -121,5 +140,12 @@ class CartViewModel : ViewModel() {
 
     private fun alreadyInCart(product: Product): Int {
         return -1 // or return position where the item is located
+    }
+
+    private fun addRandomItems(times: Int) {
+        repeat(times) {
+            val product = DataSource.products.firstOrNull { it.id == (1..20).random() }
+            if (product != null) addItem(CartItem(product, (1..3).random()))
+        }
     }
 }

@@ -7,6 +7,7 @@
     <string name="hello_summary_fragment">Hello summary fragment</string>
 
     <string name="shop_name">Sound Haven</string>
+    <string name="hi_fi_audio_store"><![CDATA[Hi-Fi & Audio store]]></string>
     <string name="shop_description">Sound Haven is your destination for premium audio equipment. We offer a carefully selected range of high-end speakers, headphones, amplifiers, and turntables to take your music listening experience to the next level. Come visit us and let our knowledgeable staff guide you to the perfect setup for your home or office.</string>
     <string name="products_header">Products</string>
     <string name="my_cart_header">My Cart</string>
@@ -29,4 +30,8 @@
     <string name="hint_street_number">Street number</string>
     <string name="hint_postal_code">Postal code</string>
     <string name="hint_city">City</string>
+    <string name="shopping">Shopping</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="order_details">Order Details</string>
+    <string name="order_email_body">Hello, \n \n I would like to place an order: \n \n %1$s \n \n My address is: \n %2$s \n \n Thank you</string>
 </resources>

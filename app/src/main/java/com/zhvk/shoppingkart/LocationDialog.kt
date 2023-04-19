@@ -33,7 +33,7 @@ class LocationDialog : DialogFragment() {
             DataBindingUtil.inflate(layoutInflater, R.layout.dialog_location_entry, null, false)
 
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Select new location")
+        builder.setTitle("Enter new location")
         builder.setView(binding.root)
         builder.setPositiveButton(R.string.change_location) { dialog: DialogInterface, which: Int ->
             setAddress()

@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/browseFragment"
         android:name="com.zhvk.shoppingkart.BrowseFragment"
-        android:label="fragment_browse"
-        tools:layout="@layout/fragment_browse" >
+        tools:layout="@layout/fragment_browse">
         <action
             android:id="@+id/action_browseFragment_to_productFragment"
             app:destination="@id/productFragment" />
@@ -20,21 +19,19 @@
     <fragment
         android:id="@+id/productFragment"
         android:name="com.zhvk.shoppingkart.ProductFragment"
-        android:label="fragment_product"
-        tools:layout="@layout/fragment_product" >
+        tools:layout="@layout/fragment_product">
         <action
             android:id="@+id/action_productFragment_to_summaryFragment"
             app:destination="@id/summaryFragment" />
         <argument
             android:name="productId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"
         android:name="com.zhvk.shoppingkart.SummaryFragment"
-        android:label="fragment_summary"
-        tools:layout="@layout/fragment_summary" >
+        tools:layout="@layout/fragment_summary">
         <action
             android:id="@+id/action_summaryFragment_to_browseFragment"
             app:destination="@id/browseFragment"

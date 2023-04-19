@@ -13,7 +13,10 @@ data class Product(
     val description: String,
     val price: Double,
     val isAvailable: Boolean,
-    @DrawableRes val imageResourceId: Int
+    @DrawableRes val imageResourceIds: List<Int>,
+    /*@DrawableRes val imageResourceId1: Int,
+    @DrawableRes val imageResourceId2: Int?,
+    @DrawableRes val imageResourceId3: Int?*/
 ) {
     fun getFormattedPrice(): String {
         return NumberFormat.getCurrencyInstance().format(price)

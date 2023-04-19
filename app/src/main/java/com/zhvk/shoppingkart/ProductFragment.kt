@@ -62,7 +62,7 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val menuHost: MenuHost = requireActivity()
+        /*val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.layout_menu, menu)
@@ -78,7 +78,7 @@ class ProductFragment : Fragment() {
                     else -> false
                 }
             }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)*/
 
         binding.apply {
             viewModel = sharedViewModel
@@ -86,7 +86,7 @@ class ProductFragment : Fragment() {
             fragment = this@ProductFragment
 
             // TODO: Handle case when product can be null
-            productImage.setImageResource(product?.imageResourceId ?: R.drawable.headphones1)
+            productImage.setImageResource(product?.imageResourceIds?.get(0) ?: 0)
             productTitle.text = product?.name
             productType.text = product?.type
             productDescription.text = product?.description

@@ -4,7 +4,7 @@
     <item android:state_enabled="true" android:state_pressed="false">
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
-            <solid android:color="#2196F3" />
+            <gradient android:centerColor="@color/blue3" android:endColor="@color/blue4" android:startColor="@color/blue2" />
         </shape>
     </item>
 
@@ -12,7 +12,7 @@
     <item android:state_enabled="true" android:state_pressed="true">
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
-            <solid android:color="#0D47A1" />
+            <solid android:color="@color/blue2"/>
         </shape>
     </item>
 
@@ -20,7 +20,7 @@
     <item android:state_enabled="true" android:state_focused="true">
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
-            <solid android:color="#1565C0" />
+            <solid android:color="@color/gray2" />
         </shape>
     </item>
 
@@ -28,7 +28,7 @@
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
-            <solid android:color="#BDBDBD"/>
+            <solid android:color="#BDBDBD" />
         </shape>
     </item>
 </selector>

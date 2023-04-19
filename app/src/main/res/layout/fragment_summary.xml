@@ -23,6 +23,18 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/cart_title"
+                style="@style/TextAppearance.ShoppingKart.NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/order_details"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/my_cart_header"
                 style="@style/TextAppearance.ShoppingKart.Header1"
                 android:layout_width="wrap_content"
@@ -31,7 +43,7 @@
                 android:layout_marginTop="32dp"
                 android:text="@string/my_cart_header"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/cart_title" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
@@ -42,8 +54,8 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_cart_header"
-                tools:listitem="@layout/item_product_summary" />
+                app:layout_constraintTop_toBottomOf="@id/my_cart_header" />
+            <!--            tools:listitem="@layout/item_product_summary"-->
 
             <TextView
                 android:id="@+id/delivery_location_header"
@@ -61,22 +73,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:onClick="@{() -> fragment.showLocationPickerDialog()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/delivery_location_header">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/delivery_location_image"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@color/gray1"
-                    android:padding="12dp"
+                    android:background="@color/gray0"
                     android:src="@drawable/round_location"
+                    android:tint="@color/blue2"
+                    app:contentPadding="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedImageView" />
 
                 <TextView
                     android:id="@+id/delivery_location_label_1"
@@ -91,7 +105,7 @@
 
                 <TextView
                     android:id="@+id/delivery_location_label_2"
-                    style="@style/TextAppearance.ShoppingKart.NormalText"
+                    style="@style/TextAppearance.ShoppingKart.NormalText.Light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -108,7 +122,8 @@
                     android:src="@drawable/round_navigate_next"
                     app:layout_constraintBottom_toBottomOf="@id/delivery_location_image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/delivery_location_image" />
+                    app:layout_constraintTop_toTopOf="@id/delivery_location_image"
+                    app:tint="@color/blue2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -128,22 +143,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:onClick="@{() -> fragment.showPaymentPickerDialog()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/payment_method_header">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/payment_method_image"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@color/gray1"
-                    android:padding="12dp"
+                    android:background="@color/gray0"
                     android:src="@drawable/round_payment"
+                    android:tint="@color/blue2"
+                    app:contentPadding="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedImageView" />
 
                 <TextView
                     android:id="@+id/payment_method_label_1"
@@ -158,7 +175,7 @@
 
                 <TextView
                     android:id="@+id/payment_method_label_2"
-                    style="@style/TextAppearance.ShoppingKart.NormalText"
+                    style="@style/TextAppearance.ShoppingKart.NormalText.Light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -175,7 +192,8 @@
                     android:src="@drawable/round_navigate_next"
                     app:layout_constraintBottom_toBottomOf="@id/payment_method_image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/payment_method_image" />
+                    app:layout_constraintTop_toTopOf="@id/payment_method_image"
+                    app:tint="@color/blue2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -192,7 +210,7 @@
 
             <TextView
                 android:id="@+id/subtotal_price_label"
-                style="@style/TextAppearance.ShoppingKart.NormalText"
+                style="@style/TextAppearance.ShoppingKart.NormalText.Light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -214,7 +232,7 @@
 
             <TextView
                 android:id="@+id/shipping_price_label"
-                style="@style/TextAppearance.ShoppingKart.NormalText"
+                style="@style/TextAppearance.ShoppingKart.NormalText.Light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -236,7 +254,7 @@
 
             <TextView
                 android:id="@+id/total_price_label"
-                style="@style/TextAppearance.ShoppingKart.NormalText"
+                style="@style/TextAppearance.ShoppingKart.NormalText.LightBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -258,13 +276,14 @@
 
             <Button
                 android:id="@+id/button_checkout"
-                style="Widget.ShoppingKart.Button"
+                style="@style/Widget.ShoppingKart.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="32dp"
+                android:onClick="@{() -> fragment.sendOrder()}"
+                android:layout_marginBottom="64dp"
                 android:text="@{@string/checkout_with_price(viewModel.totalPrice)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

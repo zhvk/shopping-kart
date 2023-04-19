@@ -2,28 +2,46 @@
 <resources>
 
     <!-- Title -->
-    <style name="TextAppearance.ShoppingKart.Title" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textSize">28sp</item>
+    <style name="TextAppearance.ShoppingKart.Title" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:alpha">0.92</item>
     </style>
 
     <!-- Header -->
-    <style name="TextAppearance.ShoppingKart.Header1" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textSize">20sp</item>
+    <style name="TextAppearance.ShoppingKart.Header1" parent="TextAppearance.ShoppingKart.Title">
+        <item name="android:textSize">22sp</item>
     </style>
 
     <!-- Header extra -->
-    <style name="TextAppearance.ShoppingKart.Header1Extra" parent="TextAppearance.MaterialComponents.Headline1">
+    <style name="TextAppearance.ShoppingKart.Header1Extra" parent="TextAppearance.ShoppingKart.Title">
         <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/open_sans_light</item>
+        <item name="android:alpha">0.6</item>
     </style>
 
     <!-- Normal text -->
-    <style name="TextAppearance.ShoppingKart.NormalText" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+    <style name="TextAppearance.ShoppingKart.NormalText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:alpha">0.92</item>
+    </style>
+
+    <!-- Normal text light -->
+    <style name="TextAppearance.ShoppingKart.NormalText.Light" parent="TextAppearance.ShoppingKart.NormalText">
+        <item name="android:alpha">0.6</item>
     </style>
 
     <!-- Normal text bold -->
     <style name="TextAppearance.ShoppingKart.NormalText.Bold" parent="TextAppearance.ShoppingKart.NormalText">
-        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Normal text light Bold -->
+    <style name="TextAppearance.ShoppingKart.NormalText.LightBold" parent="TextAppearance.ShoppingKart.NormalText">
+        <item name="android:alpha">0.6</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
     <!-- Out of stock / red text -->
@@ -31,22 +49,60 @@
         <item name="android:textColor">@color/outOfStockRed</item>
     </style>
 
+    <!-- Blue text -->
+    <style name="TextAppearance.ShoppingKart.BlueText" parent="TextAppearance.ShoppingKart.NormalText">
+        <item name="android:textColor">@color/blue4</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+    </style>
+
     <!-- Price text regular -->
-    <style name="TextAppearance.ShoppingKart.PriceText.Regular" parent="Widget.MaterialComponents.TextView">
-<!--        TODO -->
+    <style name="TextAppearance.ShoppingKart.PriceText.Regular" parent="TextAppearance.ShoppingKart.NormalText">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
     <!-- Price text bold -->
-    <style name="TextAppearance.ShoppingKart.PriceText.Big" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="Widget.ShoppingKart.Button" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_custom_blue</item>
+    <style name="TextAppearance.ShoppingKart.PriceText.Big" parent="TextAppearance.ShoppingKart.NormalText">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Widget.ShoppingKart.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-<!--        TODO -->
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="startIconTint">@color/blue2</item>
+    </style>
+
+    <style name="Widget.ShoppingKart.Button" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_custom_blue</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">0.0</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:height">60dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="Widget.ShoppingKart.ImageButtonLink" parent="Widget.ShoppingKart.Button">
+        <item name="android:background">@drawable/button_custom_gray</item>
+        <item name="android:textColor">@color/blue1</item>
+        <item name="android:tint">@color/blue1</item>
+    </style>
+
+    <style name="Widget.ShoppingKart.ImageButtonDelete" parent="Widget.ShoppingKart.Button">
+        <item name="android:background">@drawable/button_custom_gray</item>
+        <item name="android:textColor">@color/gray3</item>
+        <item name="android:tint">@color/gray3</item>
+    </style>
+
+    <style name="Widget.ShoppingKart.ImageButtonAction" parent="Widget.ShoppingKart.Button">
+        <item name="android:background">@drawable/button_custom_white</item>
+        <item name="android:textColor">@color/gray1</item>
+        <item name="android:tint">@color/gray1</item>
     </style>
 
     <!-- OTHER -->
@@ -70,10 +126,24 @@
     </style>-->
 
 
-
     <!-- Divider style -->
     <style name="Widget.ShoppingKart.Divider" parent="">
         <item name="android:background">?attr/dividerHorizontal</item>
+    </style>
+
+    <!-- Rounded ImageView -->
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <!-- ProductFragment ImageView -->
+    <style name="productFragmentImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0%</item>
+        <item name="cornerSizeTopRight">0%</item>
+        <item name="cornerSizeBottomLeft">10%</item>
+        <item name="cornerSizeBottomRight">10%</item>
     </style>
 
 </resources>

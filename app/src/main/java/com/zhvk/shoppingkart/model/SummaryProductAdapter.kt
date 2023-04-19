@@ -28,7 +28,7 @@ class SummaryProductAdapter(
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val item = viewModel.cartItems.value?.get(position) ?: CartItem()
-        holder.imageView.setImageResource(item.product.imageResourceId)
+        holder.imageView.setImageResource(item.product.imageResourceIds[0])
         holder.nameView.text = item.product.name
         holder.typeView.text = item.product.type
         holder.priceView.text = NumberFormat.getCurrencyInstance().format(item.product.price)

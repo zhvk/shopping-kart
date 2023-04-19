@@ -4,43 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="16dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/item_image_wrapper"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/item_image"
         android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:elevation="0dp"
-        app:cardCornerRadius="24dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/item_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/headphones3" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        tools:src="@drawable/headphones3" />
 
     <TextView
         android:id="@+id/item_name"
-        style="@style/TextAppearance.ShoppingKart.Header1"
+        style="@style/TextAppearance.ShoppingKart.NormalText.Bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_image_wrapper"
+        app:layout_constraintTop_toBottomOf="@id/item_image"
         tools:text="CrystalAudio X" />
 
     <TextView
         android:id="@+id/item_type"
-        style="@style/TextAppearance.ShoppingKart.NormalText"
+        style="@style/TextAppearance.ShoppingKart.NormalText.Light"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_name"
@@ -48,10 +42,10 @@
 
     <TextView
         android:id="@+id/item_price"
-        style="@style/TextAppearance.ShoppingKart.NormalText"
+        style="@style/TextAppearance.ShoppingKart.NormalText.LightBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_type"
@@ -64,7 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/out_of_stock_short"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item_price" />
+        app:layout_constraintBottom_toBottomOf="@id/item_price"
+        app:layout_constraintStart_toEndOf="@id/item_price"
+        app:layout_constraintTop_toTopOf="@id/item_price" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

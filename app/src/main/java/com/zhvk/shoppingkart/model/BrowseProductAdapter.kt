@@ -26,7 +26,7 @@ class BrowseProductAdapter : RecyclerView.Adapter<BrowseProductAdapter.ProductVi
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val item = DataSource.products[position]
-        holder.imageView.setImageResource(item.imageResourceId)
+        holder.imageView.setImageResource(item.imageResourceIds[0])
         holder.nameView.text = item.name
         holder.typeView.text = item.type
         holder.priceView.text = NumberFormat.getCurrencyInstance().format(item.price)

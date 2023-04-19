@@ -8,6 +8,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- General colors-->
+    <color name="gray0">#FFEEEEEE</color>
     <color name="gray1">#FFBDC1C7</color>
-    <color name="outOfStockRed">#FFF45050</color>
+    <color name="gray2">#FF979DAC</color>
+    <color name="gray3">#FF7D8597</color>
+    <color name="gray4">#FF5C677D</color>
+    <color name="gray5">#FF33415C</color>
+    <color name="red1">#FFF45050</color>
+    <color name="blue1">#FF0466C8</color>
+    <color name="blue2">#FF0353A4</color>
+    <color name="blue3">#FF023E7D</color>
+    <color name="blue4">#FF002855</color>
+    <color name="blue5">#FF001845</color>
+    <color name="blue6">#FF001233</color>
+
+    <!-- App Colors-->
+    <color name="outOfStockRed">@color/red1</color>
 </resources>

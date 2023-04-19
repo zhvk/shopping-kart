@@ -1,7 +1,9 @@
 package com.zhvk.shoppingkart
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,13 +54,13 @@ class SummaryFragment : Fragment() {
         _binding = null
     }
 
-    // TODO
+    // TODO: Implement picking a location
     fun showLocationPickerDialog() {
         val dialog = LocationDialog()
         dialog.show(parentFragmentManager, "locationFragmentDialog")
     }
 
-    // TODO
+    // TODO: Implement
     fun showPaymentPickerDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Select preferred way of payment")
@@ -78,5 +80,23 @@ class SummaryFragment : Fragment() {
             ).show()
         }
         builder.show()
+    }
+
+    fun sendOrder() {
+        val emailBody = getString(
+            R.string.order_email_body,
+            sharedViewModel.getOrderString(),
+            sharedViewModel.address.value.toString()
+        )
+
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("soundhaven@example.com")) // recipients
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_details))
+            putExtra(Intent.EXTRA_TEXT, emailBody)
+        }
+        if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
+            startActivity(intent)
+        }
     }
 }
