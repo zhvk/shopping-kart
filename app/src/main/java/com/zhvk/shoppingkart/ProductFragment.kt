@@ -85,8 +85,10 @@ class ProductFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             fragment = this@ProductFragment
 
-            // TODO: Handle case when product can be null
-            productImage.setImageResource(product?.imageResourceIds?.get(0) ?: 0)
+            val viewPagerAdapter = ViewPagerAdapter(product?.imageResourceIds ?: emptyList())
+            productImageViewPager.adapter = viewPagerAdapter
+            if (viewPagerAdapter.itemCount > 1) dotsIndicator.attachTo(productImageViewPager)
+
             productTitle.text = product?.name
             productType.text = product?.type
             productDescription.text = product?.description

@@ -18,149 +18,164 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/product_image"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/productFragmentImageView"
-            tools:src="@drawable/headphones3" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/product_image_view_pager"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:orientation="horizontal"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/products_shopping_label"
-            style="@style/TextAppearance.ShoppingKart.BlueText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:drawablePadding="8dp"
-            android:text="@string/shopping"
-            app:drawableLeftCompat="@drawable/round_shopping_cart"
-            app:drawableTint="@color/blue4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_image" />
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:dotsColor="@color/gray0"
+                app:dotsCornerRadius="5dp"
+                app:dotsSize="10dp"
+                app:dotsSpacing="4dp"
+                app:dotsWidthFactor="4"
+                app:layout_constraintBottom_toBottomOf="@id/product_image_view_pager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:progressMode="false"
+                app:selectedDotColor="@color/gray1" />
 
-        <TextView
-            android:id="@+id/product_title"
-            style="@style/TextAppearance.ShoppingKart.Title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@id/button_product_url"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/products_shopping_label"
-            tools:text="HiFiClouds 3000" />
+            <TextView
+                android:id="@+id/products_shopping_label"
+                style="@style/TextAppearance.ShoppingKart.BlueText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:drawablePadding="8dp"
+                android:text="@string/shopping"
+                app:drawableLeftCompat="@drawable/round_shopping_cart"
+                app:drawableTint="@color/blue4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_image_view_pager" />
 
-        <ImageButton
-            android:id="@+id/button_product_url"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            style="@style/Widget.ShoppingKart.ImageButtonLink"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/round_link"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/product_title" />
+            <TextView
+                android:id="@+id/product_title"
+                style="@style/TextAppearance.ShoppingKart.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toStartOf="@id/button_product_url"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/products_shopping_label"
+                tools:text="HiFiClouds 3000" />
 
-        <TextView
-            android:id="@+id/product_type"
-            style="@style/TextAppearance.ShoppingKart.NormalText.LightBold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_title"
-            tools:text="Over-ear" />
+            <ImageButton
+                android:id="@+id/button_product_url"
+                style="@style/Widget.ShoppingKart.ImageButtonLink"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/round_link"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/product_title" />
 
-        <TextView
-            android:id="@+id/product_description"
-            style="@style/TextAppearance.ShoppingKart.NormalText.Light"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_type"
-            tools:text="These over-ear headphones offer a cloud-like comfort while delivering crystal-clear sound, perfect for long listening sessions." />
+            <TextView
+                android:id="@+id/product_type"
+                style="@style/TextAppearance.ShoppingKart.NormalText.LightBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_title"
+                tools:text="Over-ear" />
 
-        <View
-            android:id="@+id/divider1"
-            style="@style/Widget.ShoppingKart.Divider"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_description" />
+            <TextView
+                android:id="@+id/product_description"
+                style="@style/TextAppearance.ShoppingKart.NormalText.Light"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_type"
+                tools:text="These over-ear headphones offer a cloud-like comfort while delivering crystal-clear sound, perfect for long listening sessions." />
 
-        <TextView
-            android:id="@+id/product_price_value"
-            style="@style/TextAppearance.ShoppingKart.PriceText.Big"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider1"
-            tools:text="$199.00" />
+            <View
+                android:id="@+id/divider1"
+                style="@style/Widget.ShoppingKart.Divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_description" />
 
-        <TextView
-            android:id="@+id/product_out_of_stock_info"
-            style="@style/TextAppearance.ShoppingKart.RedText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/out_of_stock_long"
-            app:layout_constraintBottom_toBottomOf="@id/product_price_value"
-            app:layout_constraintStart_toEndOf="@id/product_price_value"
-            app:layout_constraintTop_toTopOf="@id/product_price_value" />
+            <TextView
+                android:id="@+id/product_price_value"
+                style="@style/TextAppearance.ShoppingKart.PriceText.Big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                tools:text="$199.00" />
 
-        <TextView
-            android:id="@+id/product_price_disclaimer"
-            style="@style/TextAppearance.ShoppingKart.NormalText.Light"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/shipping_price_disclaimer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_price_value" />
+            <TextView
+                android:id="@+id/product_out_of_stock_info"
+                style="@style/TextAppearance.ShoppingKart.RedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/out_of_stock_long"
+                app:layout_constraintBottom_toBottomOf="@id/product_price_value"
+                app:layout_constraintStart_toEndOf="@id/product_price_value"
+                app:layout_constraintTop_toTopOf="@id/product_price_value" />
 
-        <Button
-            android:id="@+id/button_add_to_cart"
-            style="@style/Widget.ShoppingKart.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="64dp"
-            android:enabled="false"
-            android:text="@string/add_to_cart"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_price_disclaimer"
-            app:layout_constraintVertical_bias="1" />
+            <TextView
+                android:id="@+id/product_price_disclaimer"
+                style="@style/TextAppearance.ShoppingKart.NormalText.Light"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/shipping_price_disclaimer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_price_value" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/button_add_to_cart"
+                style="@style/Widget.ShoppingKart.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="64dp"
+                android:enabled="false"
+                android:text="@string/add_to_cart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_price_disclaimer"
+                app:layout_constraintVertical_bias="1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 

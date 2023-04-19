@@ -15,16 +15,16 @@ import java.text.NumberFormat
 /**
  * Adapter for Products which are shown on the BrowseFragment
  */
-class BrowseProductAdapter : RecyclerView.Adapter<BrowseProductAdapter.ProductViewHolder>() {
+class BrowseProductAdapter : RecyclerView.Adapter<BrowseProductAdapter.BrowseProductViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrowseProductViewHolder {
         val layout = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.item_product_browse, parent, false)
-        return ProductViewHolder(layout)
+        return BrowseProductViewHolder(layout)
     }
 
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BrowseProductViewHolder, position: Int) {
         val item = DataSource.products[position]
         holder.imageView.setImageResource(item.imageResourceIds[0])
         holder.nameView.text = item.name
@@ -40,11 +40,9 @@ class BrowseProductAdapter : RecyclerView.Adapter<BrowseProductAdapter.ProductVi
         }
     }
 
-    override fun getItemCount(): Int {
-        return DataSource.products.size
-    }
+    override fun getItemCount(): Int = DataSource.products.size
 
-    class ProductViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class BrowseProductViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.item_image)
         val nameView: TextView = view.findViewById(R.id.item_name)
         val typeView: TextView = view.findViewById(R.id.item_type)

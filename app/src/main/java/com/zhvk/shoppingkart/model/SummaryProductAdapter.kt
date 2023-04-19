@@ -17,16 +17,16 @@ private const val TAG = "SummaryProductAdapter"
  */
 class SummaryProductAdapter(
     private val viewModel: CartViewModel,
-) : RecyclerView.Adapter<SummaryProductAdapter.ProductViewHolder>() {
+) : RecyclerView.Adapter<SummaryProductAdapter.SummaryProductViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SummaryProductViewHolder {
         val layout = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.item_product_summary, parent, false)
-        return ProductViewHolder(layout)
+        return SummaryProductViewHolder(layout)
     }
 
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SummaryProductViewHolder, position: Int) {
         val item = viewModel.cartItems.value?.get(position) ?: CartItem()
         holder.imageView.setImageResource(item.product.imageResourceIds[0])
         holder.nameView.text = item.product.name
@@ -49,11 +49,9 @@ class SummaryProductAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return viewModel.cartItems.value?.size ?: 0
-    }
+    override fun getItemCount(): Int = viewModel.cartItems.value?.size ?: 0
 
-    class ProductViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class SummaryProductViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val imageView: ImageView = view.findViewById(R.id.item_image)
         val nameView: TextView = view.findViewById(R.id.item_name)
         val typeView: TextView = view.findViewById(R.id.item_type)
