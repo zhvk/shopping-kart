@@ -1,52 +1,55 @@
 package com.zhvk.shoppingkart.model
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zhvk.shoppingkart.BrowseFragmentDirections
-import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.data.DataSource
-import java.text.NumberFormat
+import com.zhvk.shoppingkart.databinding.ItemProductBrowseBinding
 
 /**
  * Adapter for Products which are shown on the BrowseFragment
  */
-class BrowseProductAdapter : RecyclerView.Adapter<BrowseProductAdapter.BrowseProductViewHolder>() {
+class BrowseProductAdapter(private val clickListener: BrowseProductClickListener) :
+    ListAdapter<Product, BrowseProductAdapter.BrowseProductViewHolder>(DiffCallback) {
+
+    companion object DiffCallback : DiffUtil.ItemCallback<Product>() {
+        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+            return (oldItem.name == newItem.name &&
+                    oldItem.type == newItem.type &&
+                    oldItem.description == newItem.description &&
+                    oldItem.price == newItem.price &&
+                    oldItem.isAvailable == newItem.isAvailable &&
+                    oldItem.imageResourceIds == newItem.imageResourceIds)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrowseProductViewHolder {
-        val layout = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.item_product_browse, parent, false)
-        return BrowseProductViewHolder(layout)
+        return BrowseProductViewHolder(ItemProductBrowseBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: BrowseProductViewHolder, position: Int) {
         val item = DataSource.products[position]
-        holder.imageView.setImageResource(item.imageResourceIds[0])
-        holder.nameView.text = item.name
-        holder.typeView.text = item.type
-        holder.priceView.text = NumberFormat.getCurrencyInstance().format(item.price)
-        holder.availabilityView.visibility = if (item.isAvailable) View.GONE else View.VISIBLE
+        holder.bind(item, clickListener)
+    }
 
-        holder.view.setOnClickListener {
-            val action = BrowseFragmentDirections.actionBrowseFragmentToProductFragment(
-                productId = item.id
-            )
-            holder.view.findNavController().navigate(action)
+    class BrowseProductViewHolder(
+        private var binding: ItemProductBrowseBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(product: Product, clickListener: BrowseProductClickListener) {
+            binding.product = product
+            binding.clickListener = clickListener
+            binding.executePendingBindings()
         }
     }
+}
 
-    override fun getItemCount(): Int = DataSource.products.size
-
-    class BrowseProductViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.item_image)
-        val nameView: TextView = view.findViewById(R.id.item_name)
-        val typeView: TextView = view.findViewById(R.id.item_type)
-        val priceView: TextView = view.findViewById(R.id.item_price)
-        val availabilityView: TextView = view.findViewById(R.id.item_availability)
-    }
+class BrowseProductClickListener(val clickListener: (productId: Int) -> Unit) {
+    fun onClick(product: Product) = clickListener(product.id)
 }

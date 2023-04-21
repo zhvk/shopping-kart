@@ -8,11 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.zhvk.shoppingkart.data.DataSource
 import com.zhvk.shoppingkart.databinding.FragmentBrowseBinding
 import com.zhvk.shoppingkart.model.BrowseProductAdapter
+import com.zhvk.shoppingkart.model.BrowseProductClickListener
 import com.zhvk.shoppingkart.model.CartViewModel
+import com.zhvk.shoppingkart.model.Product
 
 
 /**
@@ -44,8 +45,12 @@ class BrowseFragment : Fragment() {
 
             productsHeaderNumber.text = DataSource.products.size.toString()
 
-            recyclerView.adapter = BrowseProductAdapter()
-            recyclerView.layoutManager = GridLayoutManager(context, 2)
+            recyclerView.adapter = BrowseProductAdapter(BrowseProductClickListener {productId ->
+                val action = BrowseFragmentDirections.actionBrowseFragmentToProductFragment(
+                    productId = productId
+                )
+                findNavController().navigate(action)
+            })
             recyclerView.setHasFixedSize(true)
         }
     }
@@ -58,5 +63,9 @@ class BrowseFragment : Fragment() {
     fun navigateToCheckout() {
         val action = BrowseFragmentDirections.actionBrowseFragmentToSummaryFragment()
         findNavController().navigate(action)
+    }
+
+    fun getBrowseData(): List<Product> {
+        return DataSource.products
     }
 }
