@@ -2,9 +2,11 @@ package com.zhvk.shoppingkart.model
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.data.DataSource
 import com.zhvk.shoppingkart.databinding.ItemProductBrowseBinding
 
@@ -30,7 +32,15 @@ class BrowseProductAdapter(private val clickListener: BrowseProductClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BrowseProductViewHolder {
-        return BrowseProductViewHolder(ItemProductBrowseBinding.inflate(LayoutInflater.from(parent.context)))
+        // TODO: Which is proper way of inflating VH when using Data Binding?
+//        return BrowseProductViewHolder(ItemProductBrowseBinding.inflate(LayoutInflater.from(parent.context)))
+        val binding: ItemProductBrowseBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_product_browse,
+            parent,
+            false
+        )
+        return BrowseProductViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: BrowseProductViewHolder, position: Int) {
