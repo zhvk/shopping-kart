@@ -144,7 +144,7 @@ class CartViewModel : ViewModel() {
 
     private fun addRandomItems(times: Int) {
         repeat(times) {
-            val product = DataSource.products.firstOrNull { it.id == (1..20).random() }
+            val product = DataSource.products.firstOrNull { it.id == (1..20).random().toLong() }
             if (product != null) addItem(CartItem(product, (1..3).random()))
         }
     }

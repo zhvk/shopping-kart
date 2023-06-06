@@ -32,14 +32,14 @@ class ProductFragment : Fragment() {
     private var _binding: FragmentProductBinding? = null
     private val binding get() = _binding!!
 
-    private var productId: Int = -1
+    private var productId: Long = -1
     private var product: Product? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            productId = it.getInt(PRODUCT_ID)
+            productId = it.getLong(PRODUCT_ID)
         }
         product = DataSource.products.firstOrNull { it.id == productId }
     }

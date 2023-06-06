@@ -25,8 +25,7 @@
             app:destination="@id/summaryFragment" />
         <argument
             android:name="productId"
-            android:defaultValue="-1"
-            app:argType="integer" />
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"

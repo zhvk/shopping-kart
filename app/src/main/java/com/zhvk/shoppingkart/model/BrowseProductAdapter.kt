@@ -60,6 +60,6 @@ class BrowseProductAdapter(private val clickListener: BrowseProductClickListener
     }
 }
 
-class BrowseProductClickListener(val clickListener: (productId: Int) -> Unit) {
+class BrowseProductClickListener(val clickListener: (productId: Long) -> Unit) {
     fun onClick(product: Product) = clickListener(product.id)
 }
