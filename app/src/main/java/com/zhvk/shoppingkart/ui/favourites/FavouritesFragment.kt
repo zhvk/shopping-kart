@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart
+package com.zhvk.shoppingkart.ui.favourites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentFavouritesBinding
-import com.zhvk.shoppingkart.model.BrowseProductAdapter
-import com.zhvk.shoppingkart.model.BrowseProductClickListener
-import com.zhvk.shoppingkart.model.CartViewModel
+import com.zhvk.shoppingkart.ui.BrowseProductClickListener
+import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
+import com.zhvk.shoppingkart.ui.CartViewModel
 
 class FavouritesFragment : Fragment() {
 
@@ -36,7 +37,7 @@ class FavouritesFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
 
-            recyclerView.adapter = BrowseProductAdapter(sharedViewModel.getFavourites(),
+            recyclerView.adapter = BrowseProductsAdapter(sharedViewModel.getFavourites(),
                 BrowseProductClickListener { productId ->
                     val action =
                         FavouritesFragmentDirections.actionFavouritesFragmentToProductFragment(

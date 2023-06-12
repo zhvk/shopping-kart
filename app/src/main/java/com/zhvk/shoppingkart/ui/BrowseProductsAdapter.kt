@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart.model
+package com.zhvk.shoppingkart.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,15 +8,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.ItemProductBrowseBinding
+import com.zhvk.shoppingkart.model.Product
 
 /**
- * Adapter for Products which are shown on the BrowseFragment
+ * Adapter for Products which are shown on the BrowseFragment and on the FavouritesFragment
  */
-class BrowseProductAdapter(
+class BrowseProductsAdapter(
     private val dataSet: List<Product>,
     private val clickListener: BrowseProductClickListener
 ) :
-    ListAdapter<Product, BrowseProductAdapter.BrowseProductViewHolder>(DiffCallback) {
+    ListAdapter<Product, BrowseProductsAdapter.BrowseProductViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {

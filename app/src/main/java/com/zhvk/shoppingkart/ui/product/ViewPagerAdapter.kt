@@ -1,10 +1,11 @@
-package com.zhvk.shoppingkart
+package com.zhvk.shoppingkart.ui.product
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.zhvk.shoppingkart.R
 
 class ViewPagerAdapter(private val imageList: List<Int>) :
     RecyclerView.Adapter<ViewPagerAdapter.ImageViewHolder>() {

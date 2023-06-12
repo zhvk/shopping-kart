@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart
+package com.zhvk.shoppingkart.ui.product
 
 import android.content.Intent
 import android.net.Uri
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentProductBinding
 import com.zhvk.shoppingkart.model.CartItem
-import com.zhvk.shoppingkart.model.CartViewModel
 import com.zhvk.shoppingkart.model.Product
+import com.zhvk.shoppingkart.ui.CartViewModel
 import java.text.NumberFormat
-
 
 const val PRODUCT_ID = "productId"
 const val SEARCH_PREFIX = "https://www.google.com/search?q="
@@ -111,7 +111,7 @@ class ProductFragment : Fragment() {
     }
 
     private fun searchFor(parameter: String?) {
-        val queryUrl: Uri = Uri.parse("${SEARCH_PREFIX}${parameter}")
+        val queryUrl: Uri = Uri.parse("$SEARCH_PREFIX${parameter}")
         val intent = Intent(Intent.ACTION_VIEW, queryUrl)
         context?.startActivity(intent)
     }

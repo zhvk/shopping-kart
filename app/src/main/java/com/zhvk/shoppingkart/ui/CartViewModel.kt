@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart.model
+package com.zhvk.shoppingkart.ui
 
 import android.util.Log
 import android.view.View
@@ -6,6 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.zhvk.shoppingkart.model.CartItem
+import com.zhvk.shoppingkart.model.Product
+import com.zhvk.shoppingkart.model.UserAddress
 import com.zhvk.shoppingkart.model.data.DataSource
 import java.text.NumberFormat
 

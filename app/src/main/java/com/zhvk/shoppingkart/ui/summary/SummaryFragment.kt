@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart
+package com.zhvk.shoppingkart.ui.summary
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -11,11 +11,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentSummaryBinding
-import com.zhvk.shoppingkart.model.CartViewModel
-import com.zhvk.shoppingkart.model.SummaryProductAdapter
-
-private const val TAG = "SummaryFragment"
+import com.zhvk.shoppingkart.ui.CartViewModel
 
 /**
  * Fragment displaying order summary and checkout.

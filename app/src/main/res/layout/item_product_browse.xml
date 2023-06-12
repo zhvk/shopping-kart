@@ -13,7 +13,7 @@
 
         <variable
             name="clickListener"
-            type="com.zhvk.shoppingkart.model.BrowseProductClickListener" />
+            type="com.zhvk.shoppingkart.ui.BrowseProductClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart
+package com.zhvk.shoppingkart.ui.summary
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -8,8 +8,9 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.DialogLocationEntryBinding
-import com.zhvk.shoppingkart.model.CartViewModel
+import com.zhvk.shoppingkart.ui.CartViewModel
 
 // TODO
 class LocationDialog : DialogFragment() {

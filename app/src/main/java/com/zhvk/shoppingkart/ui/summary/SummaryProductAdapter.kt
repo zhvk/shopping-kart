@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart.model
+package com.zhvk.shoppingkart.ui.summary
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zhvk.shoppingkart.R
+import com.zhvk.shoppingkart.model.CartItem
+import com.zhvk.shoppingkart.ui.CartViewModel
 import java.text.NumberFormat
-
-private const val TAG = "SummaryProductAdapter"
 
 /**
  * Adapter for Products which are shown on the SummaryFragment

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/browseFragment"
-        android:name="com.zhvk.shoppingkart.BrowseFragment"
+        android:name="com.zhvk.shoppingkart.ui.browse.BrowseFragment"
         tools:layout="@layout/fragment_browse">
         <action
             android:id="@+id/action_browseFragment_to_productFragment"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/productFragment"
-        android:name="com.zhvk.shoppingkart.ProductFragment"
+        android:name="com.zhvk.shoppingkart.ui.product.ProductFragment"
         tools:layout="@layout/fragment_product">
         <action
             android:id="@+id/action_productFragment_to_summaryFragment"
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/summaryFragment"
-        android:name="com.zhvk.shoppingkart.SummaryFragment"
+        android:name="com.zhvk.shoppingkart.ui.summary.SummaryFragment"
         tools:layout="@layout/fragment_summary">
         <action
             android:id="@+id/action_summaryFragment_to_browseFragment"
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="com.zhvk.shoppingkart.FavouritesFragment"
+        android:name="com.zhvk.shoppingkart.ui.favourites.FavouritesFragment"
         android:label="fragment_favourites"
         tools:layout="@layout/fragment_favourites">
         <action

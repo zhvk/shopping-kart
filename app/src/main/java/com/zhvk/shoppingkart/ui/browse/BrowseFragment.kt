@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart
+package com.zhvk.shoppingkart.ui.browse
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentBrowseBinding
-import com.zhvk.shoppingkart.model.BrowseProductAdapter
-import com.zhvk.shoppingkart.model.BrowseProductClickListener
-import com.zhvk.shoppingkart.model.CartViewModel
+import com.zhvk.shoppingkart.ui.BrowseProductClickListener
+import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
+import com.zhvk.shoppingkart.ui.CartViewModel
 
 /**
  * Fragment for browsing all Store Products. This is the first screen on which the user lands.
@@ -40,7 +41,7 @@ class BrowseFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             fragment = this@BrowseFragment
 
-            recyclerView.adapter = BrowseProductAdapter(sharedViewModel.getBrowseData(),
+            recyclerView.adapter = BrowseProductsAdapter(sharedViewModel.getBrowseData(),
                 BrowseProductClickListener { productId ->
                     val action = BrowseFragmentDirections.actionBrowseFragmentToProductFragment(
                         productId = productId
