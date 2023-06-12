@@ -3,8 +3,8 @@ package com.zhvk.shoppingkart
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
 import com.zhvk.shoppingkart.model.Product
+import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
 
 @BindingAdapter("observeData")
 fun bindBrowseRecyclerView(recyclerView: RecyclerView, data: List<Product>?) {

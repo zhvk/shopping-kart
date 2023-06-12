@@ -34,6 +34,8 @@
         android:id="@+id/summaryFragment"
         android:name="com.zhvk.shoppingkart.ui.summary.SummaryFragment"
         tools:layout="@layout/fragment_summary">
+        <!-- TODO: This action is not needed at the moment because we removed action that
+              navigated from ProductFragment to SummaryFragment -->
         <action
             android:id="@+id/action_summaryFragment_to_browseFragment"
             app:destination="@id/browseFragment"

@@ -29,4 +29,9 @@
     <string name="proceed_to_checkout">Proceed to Checkout</string>
     <string name="order_details">Order Details</string>
     <string name="order_email_body">Hello, \n \n I would like to place an order: \n \n %1$s \n \n My address is: \n %2$s \n \n Thank you</string>
+    <string name="cancel_order">Cancel order</string>
+    <string name="cancel_order_dialog_title">Are you sure you want to cancel this order?</string>
+    <string name="cancel_order_confirmation">Cart has been emptied</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

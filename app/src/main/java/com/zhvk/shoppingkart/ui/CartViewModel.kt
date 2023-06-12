@@ -118,6 +118,10 @@ class CartViewModel : ViewModel() {
         return sb.toString()
     }
 
+    fun cancelOrder() {
+        resetOrder()
+    }
+
     private fun resetOrder() {
         _cartItems.value = mutableListOf<CartItem>()
         _subtotalPrice.value = 0.0

@@ -43,6 +43,8 @@ class SummaryFragment : Fragment() {
             fragment = this@SummaryFragment
 
             recyclerView.adapter = SummaryProductAdapter(sharedViewModel)
+
+            actionCancelOrder.setOnClickListener { showCancelOrderDialog() }
         }
     }
 
@@ -66,14 +68,14 @@ class SummaryFragment : Fragment() {
         builder.setPositiveButton(R.string.change_location) { dialog: DialogInterface, which: Int ->
             Toast.makeText(
                 requireContext(),
-                android.R.string.yes, Toast.LENGTH_SHORT
+                R.string.yes, Toast.LENGTH_SHORT
             ).show()
         }
 
         builder.setNegativeButton(R.string.cancel) { dialog: DialogInterface, which: Int ->
             Toast.makeText(
                 requireContext(),
-                android.R.string.no, Toast.LENGTH_SHORT
+                R.string.no, Toast.LENGTH_SHORT
             ).show()
         }
         builder.show()
@@ -95,5 +97,25 @@ class SummaryFragment : Fragment() {
         if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
             startActivity(intent)
         }
+    }
+
+    private fun cancelOrder() {
+        Toast.makeText(context, R.string.cancel_order_confirmation, Toast.LENGTH_LONG).show()
+        requireActivity().onBackPressedDispatcher.onBackPressed()
+        sharedViewModel.cancelOrder()
+    }
+
+    private fun showCancelOrderDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage(R.string.cancel_order_dialog_title)
+            .setCancelable(false)
+            .setPositiveButton(R.string.yes) { dialog, id ->
+                cancelOrder()
+            }
+            .setNegativeButton(R.string.no) { dialog, id ->
+                dialog.dismiss()
+            }
+        val alert = builder.create()
+        alert.show()
     }
 }
