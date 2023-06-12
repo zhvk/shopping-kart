@@ -8,19 +8,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.zhvk.shoppingkart.databinding.FragmentBrowseBinding
+import com.zhvk.shoppingkart.databinding.FragmentFavouritesBinding
 import com.zhvk.shoppingkart.model.BrowseProductAdapter
 import com.zhvk.shoppingkart.model.BrowseProductClickListener
 import com.zhvk.shoppingkart.model.CartViewModel
 
-/**
- * Fragment for browsing all Store Products. This is the first screen on which the user lands.
- */
-class BrowseFragment : Fragment() {
+class FavouritesFragment : Fragment() {
 
     private val sharedViewModel: CartViewModel by activityViewModels()
 
-    private var _binding: FragmentBrowseBinding? = null
+    private var _binding: FragmentFavouritesBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,7 +25,7 @@ class BrowseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_browse, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_favourites, container, false)
         return binding.root
     }
 
@@ -36,36 +33,23 @@ class BrowseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
-            fragment = this@BrowseFragment
+            viewModel = sharedViewModel
 
-            recyclerView.adapter = BrowseProductAdapter(sharedViewModel.getBrowseData(),
+            recyclerView.adapter = BrowseProductAdapter(sharedViewModel.getFavourites(),
                 BrowseProductClickListener { productId ->
-                    val action = BrowseFragmentDirections.actionBrowseFragmentToProductFragment(
-                        productId = productId
-                    )
+                    val action =
+                        FavouritesFragmentDirections.actionFavouritesFragmentToProductFragment(
+                            productId = productId
+                        )
                     findNavController().navigate(action)
                 })
-            // TODO: Should be false with the new features
-            recyclerView.setHasFixedSize(false)
-
-            goToFavouritesButton.setOnClickListener { navigateToFavouritesFragment() }
+            recyclerView.setHasFixedSize(true)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    fun navigateToCheckout() {
-        val action = BrowseFragmentDirections.actionBrowseFragmentToSummaryFragment()
-        findNavController().navigate(action)
-    }
-
-    fun navigateToFavouritesFragment() {
-        val action = BrowseFragmentDirections.actionBrowseFragmentToFavouritesFragment()
-        findNavController().navigate(action)
     }
 }

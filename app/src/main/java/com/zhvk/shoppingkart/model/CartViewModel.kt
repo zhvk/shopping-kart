@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.zhvk.shoppingkart.data.DataSource
+import com.zhvk.shoppingkart.model.data.DataSource
 import java.text.NumberFormat
 
 private const val TAG = "CartViewModel"
@@ -54,6 +54,16 @@ class CartViewModel : ViewModel() {
         }
 
         return cartSize
+    }
+
+    fun getProduct(productId: Long) = DataSource.products.firstOrNull { it.id == productId }
+
+    fun getBrowseData(): List<Product> {
+        return DataSource.products.shuffled()
+    }
+
+    fun getFavourites(): List<Product> {
+        return DataSource.products.filter { it.isFavourite }
     }
 
     fun checkoutButtonVisibility(): Int {
@@ -144,7 +154,7 @@ class CartViewModel : ViewModel() {
 
     private fun addRandomItems(times: Int) {
         repeat(times) {
-            val product = DataSource.products.firstOrNull { it.id == (1..20).random().toLong() }
+            val product = DataSource.products.firstOrNull { it.id == (1..21).random().toLong() }
             if (product != null) addItem(CartItem(product, (1..3).random()))
         }
     }

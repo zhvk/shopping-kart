@@ -12,13 +12,14 @@ fun bindBrowseRecyclerView(recyclerView: RecyclerView, data: List<Product>?) {
     adapter.submitList(data)
 }
 
-/*@BindingAdapter("observeData")
-fun bindSummaryRecyclerView(recyclerView: RecyclerView, data: MutableList<CartItem>?) {
-    val adapter = recyclerView.adapter as SummaryProductAdapter
-    adapter.submitList(data)
+/*@BindingAdapter("isFavourite")
+fun setFavourite(imageButton: ImageButton, isFavourite: Boolean) {
+    val drawable = if (isFavourite) R.drawable.round_favorite_filled
+    else R.drawable.round_favorite_border
+    imageButton.setImageResource(drawable)
 }*/
 
-// "Hacky" way of setting image resource with current DataSource. You don't need this with real repository
+// TODO: "Hacky" way of setting image resource with current DataSource. You don't need this with real repository
 @BindingAdapter("setImageResource")
 fun setImageResource(imageView: ImageView, imageResource: Int) {
     imageView.setImageResource(imageResource)

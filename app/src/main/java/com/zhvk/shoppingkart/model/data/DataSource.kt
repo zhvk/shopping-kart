@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart.data
+package com.zhvk.shoppingkart.model.data
 
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.model.Product
@@ -17,7 +17,7 @@ object DataSource {
             description = "These noise-cancelling Wireless headphones use cutting-edge technology to deliver crystal-clear sound, making them perfect for audiophiles and commuters alike.",
             price = 249.00,
             isAvailable = true,
-            isFavourite = false,
+            isFavourite = true,
             imageResourceIds = listOf(R.drawable.headphones1_1, R.drawable.headphones1_2)
         ),
         Product(
@@ -31,7 +31,7 @@ object DataSource {
             isFavourite = false,
             imageResourceIds = listOf(R.drawable.headphones2)
         ),
-        /*Product(
+        Product(
             id = 3,
             name = "SonicZone 9000",
             category = "Headphones",
@@ -41,7 +41,7 @@ object DataSource {
             isAvailable = false,
             isFavourite = false,
             imageResourceIds = listOf(R.drawable.headphones3)
-        ),*/
+        ),
         Product(
             id = 4,
             name = "AudioBliss Max",
@@ -65,7 +65,7 @@ object DataSource {
             description = "These headphones are specifically designed for bassheads, with powerful, deep bass that will make your music come alive.",
             price = 129.99,
             isAvailable = true,
-            isFavourite = false,
+            isFavourite = true,
             imageResourceIds = listOf(R.drawable.headphones5)
         ),
         Product(
@@ -120,7 +120,7 @@ object DataSource {
             description = "These wireless earbuds deliver crystal-clear audio with a stunningly sleek design, perfect for anyone who wants to listen to their music in style.",
             price = 129.00,
             isAvailable = true,
-            isFavourite = false,
+            isFavourite = true,
             imageResourceIds = listOf(
                 R.drawable.earbuds1_1,
                 R.drawable.earbuds1_2,
@@ -212,7 +212,7 @@ object DataSource {
             description = "This omnidirectional condenser microphone is perfect for capturing a room's ambience or recording group vocals. It features a wide frequency response and low self-noise, making it a great choice for professional recordings.",
             price = 249.99,
             isAvailable = true,
-            isFavourite = false,
+            isFavourite = true,
             imageResourceIds = listOf(R.drawable.mic4_1, R.drawable.mic4_2)
         ),
         Product(
@@ -245,8 +245,8 @@ object DataSource {
             description = "These floorstanding speakers provide a clear and detailed sound with a frequency response of 28 Hz - 25 kHz. The passive design requires an external amplifier, but the result is a stunning and immersive audio experience that will delight any audiophile.",
             price = 1499.99,
             isAvailable = true,
-            isFavourite = false,
+            isFavourite = true,
             imageResourceIds = listOf(R.drawable.speaker3)
         )
-    ).shuffled()
+    )
 }

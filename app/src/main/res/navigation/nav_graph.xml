@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_browseFragment_to_summaryFragment"
             app:destination="@id/summaryFragment" />
+        <action
+            android:id="@+id/action_browseFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -36,5 +39,14 @@
             app:destination="@id/browseFragment"
             app:popUpTo="@id/browseFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.zhvk.shoppingkart.FavouritesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites">
+        <action
+            android:id="@+id/action_favouritesFragment_to_productFragment"
+            app:destination="@id/productFragment" />
     </fragment>
 </navigation>

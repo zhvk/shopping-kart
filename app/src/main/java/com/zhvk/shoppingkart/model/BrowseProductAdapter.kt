@@ -7,13 +7,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zhvk.shoppingkart.R
-import com.zhvk.shoppingkart.data.DataSource
 import com.zhvk.shoppingkart.databinding.ItemProductBrowseBinding
 
 /**
  * Adapter for Products which are shown on the BrowseFragment
  */
-class BrowseProductAdapter(private val clickListener: BrowseProductClickListener) :
+class BrowseProductAdapter(
+    private val dataSet: List<Product>,
+    private val clickListener: BrowseProductClickListener
+) :
     ListAdapter<Product, BrowseProductAdapter.BrowseProductViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Product>() {
@@ -44,7 +46,7 @@ class BrowseProductAdapter(private val clickListener: BrowseProductClickListener
     }
 
     override fun onBindViewHolder(holder: BrowseProductViewHolder, position: Int) {
-        val item = DataSource.products[position]
+        val item = dataSet[position]
         holder.bind(item, clickListener)
     }
 

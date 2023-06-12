@@ -27,28 +27,58 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/gray0"
+                    android:closeIcon="@drawable/round_search_off"
+                    android:searchHintIcon="@drawable/round_search"
+                    android:searchIcon="@drawable/round_search"
+                    app:layout_constraintEnd_toStartOf="@id/go_to_favourites_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <!--android:commitIcon="@drawable/ic_commit"
+                    android:goIcon="@drawable/ic_go"-->
+
+                </androidx.appcompat.widget.SearchView>
+
+                <ImageButton
+                    android:id="@+id/go_to_favourites_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@null"
+                    android:padding="12dp"
+                    android:src="@drawable/round_favourites"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/shop_name"
                     style="@style/TextAppearance.ShoppingKart.Title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
                     android:text="@string/shop_name"
                     app:layout_constraintEnd_toStartOf="@id/store_logo"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/search_view" />
 
                 <ImageView
                     android:id="@+id/store_logo"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="24dp"
                     android:src="@drawable/store_logo"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/search_view" />
 
                 <TextView
                     android:id="@+id/shop_subtitle"
@@ -90,6 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:text="@{Integer.toString(viewModel.getBrowseData().size)}"
                     app:layout_constraintBottom_toBottomOf="@id/products_header"
                     app:layout_constraintStart_toEndOf="@id/products_header"
                     app:layout_constraintTop_toTopOf="@id/products_header"
@@ -116,14 +147,14 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:observeData="@{fragment.getBrowseData()}"
                     android:layout_marginBottom="120dp"
                     android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/products_header"
+                    app:observeData="@{viewModel.getBrowseData()}"
                     app:spanCount="2"
                     tools:itemCount="2"
                     tools:listitem="@layout/item_product_browse" />

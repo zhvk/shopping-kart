@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.zhvk.shoppingkart.data.DataSource
 import com.zhvk.shoppingkart.databinding.FragmentProductBinding
 import com.zhvk.shoppingkart.model.CartItem
 import com.zhvk.shoppingkart.model.CartViewModel
@@ -41,7 +40,7 @@ class ProductFragment : Fragment() {
         arguments?.let {
             productId = it.getLong(PRODUCT_ID)
         }
-        product = DataSource.products.firstOrNull { it.id == productId }
+        product = sharedViewModel.getProduct(productId)
     }
 
     override fun onCreateView(
@@ -92,11 +91,16 @@ class ProductFragment : Fragment() {
                 productOutOfStockInfo.visibility = View.GONE
                 buttonAddToCart.isEnabled = true
             }
+            setFavouriteIcon(product)
 
-            buttonProductUrl.setOnClickListener { searchFor(product?.name) }
+//            buttonProductUrl.setOnClickListener { searchFor(product?.name) }
             buttonAddToCart.setOnClickListener {
                 sharedViewModel.addItem(CartItem(product!!, 1))
                 showSnackbar()
+            }
+            buttonFavourite.setOnClickListener {
+                product?.switchFavourite()
+                setFavouriteIcon(product)
             }
         }
     }
@@ -123,5 +127,11 @@ class ProductFragment : Fragment() {
     private fun navigateToCheckout() {
         val action = ProductFragmentDirections.actionProductFragmentToSummaryFragment()
         findNavController().navigate(action)
+    }
+
+    private fun setFavouriteIcon(product: Product?) {
+        val drawable = if (product?.isFavourite == true) R.drawable.round_favourite_filled
+        else R.drawable.round_favourite_border
+        binding.buttonFavourite.setImageResource(drawable)
     }
 }
