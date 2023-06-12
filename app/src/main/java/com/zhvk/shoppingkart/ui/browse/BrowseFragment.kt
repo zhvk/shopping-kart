@@ -1,5 +1,6 @@
 package com.zhvk.shoppingkart.ui.browse
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,11 @@ class BrowseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+        val tutorialFinished = sharedPref?.getBoolean(getString(R.string.tutorial_preference_key), false)
+
+        if (tutorialFinished == false) navigateToTutorial()
+
         binding.apply {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
@@ -67,6 +73,11 @@ class BrowseFragment : Fragment() {
 
     fun navigateToFavouritesFragment() {
         val action = BrowseFragmentDirections.actionBrowseFragmentToFavouritesFragment()
+        findNavController().navigate(action)
+    }
+
+    fun navigateToTutorial() {
+        val action = BrowseFragmentDirections.actionBrowseFragmentToTutorialFragment()
         findNavController().navigate(action)
     }
 }

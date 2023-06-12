@@ -7,8 +7,8 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.zhvk.shoppingkart.R
 
-class ViewPagerAdapter(private val imageList: List<Int>) :
-    RecyclerView.Adapter<ViewPagerAdapter.ImageViewHolder>() {
+class ProductImagesViewPagerAdapter(private val imageList: List<Int>) :
+    RecyclerView.Adapter<ProductImagesViewPagerAdapter.ImageViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val layout = LayoutInflater

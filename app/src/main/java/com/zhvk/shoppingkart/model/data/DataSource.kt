@@ -2,11 +2,30 @@ package com.zhvk.shoppingkart.model.data
 
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.model.Product
+import com.zhvk.shoppingkart.model.TutorialPageInfo
 
 /**
  * An object to generate a static list of shopping products
  */
 object DataSource {
+
+    val tutorialPageInfoList: List<TutorialPageInfo> = listOf(
+        TutorialPageInfo(
+            title = "Welcome",
+            description = "Welcome to our Hi-Fi mobile app shop! Discover the latest and greatest audio products, compare features, and find your perfect audio companion",
+            animationResource = R.raw.manage_online_shop
+        ),
+        TutorialPageInfo(
+            title = "Save Favourites",
+            description = "Never lose track of your favorite products! Save items to your wishlist and easily access them whenever you're ready to make a purchase",
+            animationResource = R.raw.isometric_delivery_box
+        ),
+        TutorialPageInfo(
+            title = "Checkout & Await",
+            description = "Double-check your order details and confirm your purchase. Now, sit back and eagerly await the arrival of your chosen audio products",
+            animationResource = R.raw.door_delivery
+        )
+    )
 
     val products: List<Product> = listOf(
         Product(

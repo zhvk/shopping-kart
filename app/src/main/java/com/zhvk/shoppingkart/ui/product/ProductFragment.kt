@@ -55,30 +55,12 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.layout_menu, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.action_go_to_checkout -> {
-                        navigateToCheckout()
-                        true
-                    }
-
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)*/
-
         binding.apply {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
             fragment = this@ProductFragment
 
-            val viewPagerAdapter = ViewPagerAdapter(product?.imageResourceIds ?: emptyList())
+            val viewPagerAdapter = ProductImagesViewPagerAdapter(product?.imageResourceIds ?: emptyList())
             productImageViewPager.adapter = viewPagerAdapter
             if (viewPagerAdapter.itemCount > 1) dotsIndicator.attachTo(productImageViewPager)
 
