@@ -34,4 +34,7 @@
     <string name="cancel_order_confirmation">Cart has been emptied</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="back_to_browsing">Back to Home</string>
+    <string name="order_success_header">Order success</string>
+    <string name="order_success_info">Your package will be sent to your address. Thank you for your order!</string>
 </resources>

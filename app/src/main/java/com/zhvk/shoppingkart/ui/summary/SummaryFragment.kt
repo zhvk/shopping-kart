@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentSummaryBinding
 import com.zhvk.shoppingkart.ui.CartViewModel
@@ -81,7 +82,8 @@ class SummaryFragment : Fragment() {
         builder.show()
     }
 
-    fun sendOrder() {
+    // Method that sends order details via email.
+    fun sendOrderViaEmail() {
         val emailBody = getString(
             R.string.order_email_body,
             sharedViewModel.getOrderString(),
@@ -90,13 +92,22 @@ class SummaryFragment : Fragment() {
 
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_EMAIL, arrayOf("soundhaven@example.com")) // recipients
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("orders@soundhaven.shop")) // recipients
             putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_details))
             putExtra(Intent.EXTRA_TEXT, emailBody)
         }
         if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
             startActivity(intent)
         }
+    }
+
+    fun navigateToSuccessFragment() {
+        val action = SummaryFragmentDirections.actionSummaryFragmentToSuccessFragment()
+        findNavController().navigate(action)
+
+        // TODO: Since we don't have proper implementation of sending order via API, we are
+        //  canceling the order because we want to clear shared ViewModel data.
+        sharedViewModel.cancelOrder()
     }
 
     private fun cancelOrder() {
