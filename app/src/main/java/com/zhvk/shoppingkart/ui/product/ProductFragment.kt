@@ -112,8 +112,8 @@ class ProductFragment : Fragment() {
     }
 
     private fun setFavouriteIcon(product: Product?) {
-        val drawable = if (product?.isFavourite == true) R.drawable.round_favourite_filled
-        else R.drawable.round_favourite_border
+        val drawable = if (product?.isFavourite == true) R.drawable.ic_round_favourite_filled
+        else R.drawable.ic_round_favourite_border
         binding.buttonFavourite.setImageResource(drawable)
     }
 }

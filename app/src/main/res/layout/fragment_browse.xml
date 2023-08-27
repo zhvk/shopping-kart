@@ -36,9 +36,9 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:background="@color/gray0"
-                    android:closeIcon="@drawable/round_search_off"
-                    android:searchHintIcon="@drawable/round_search"
-                    android:searchIcon="@drawable/round_search"
+                    android:closeIcon="@drawable/ic_round_search_off"
+                    android:searchHintIcon="@drawable/ic_round_search"
+                    android:searchIcon="@drawable/ic_round_search"
                     app:layout_constraintEnd_toStartOf="@id/go_to_favourites_button"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -55,7 +55,7 @@
                     android:layout_marginEnd="8dp"
                     android:background="@null"
                     android:padding="12dp"
-                    android:src="@drawable/round_favourites"
+                    android:src="@drawable/ic_round_favourites"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

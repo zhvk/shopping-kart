@@ -58,7 +58,7 @@
                 android:layout_marginTop="32dp"
                 android:drawablePadding="8dp"
                 android:text="@string/shopping"
-                app:drawableLeftCompat="@drawable/round_shopping_cart"
+                app:drawableLeftCompat="@drawable/ic_round_shopping_cart"
                 app:drawableTint="@color/blue4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/product_image_view_pager" />
@@ -92,7 +92,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/round_favourite_border"
+                android:src="@drawable/ic_round_favourite_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/product_title" />
 
