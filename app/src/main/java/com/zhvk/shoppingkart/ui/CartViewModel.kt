@@ -11,6 +11,7 @@ import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.model.UserAddress
 import com.zhvk.shoppingkart.model.data.DataSource
 import java.text.NumberFormat
+import java.util.Locale
 
 private const val TAG = "CartViewModel"
 
@@ -18,6 +19,9 @@ private const val TAG = "CartViewModel"
  * Shared ViewModel that handles all Cart business logic
  */
 class CartViewModel : ViewModel() {
+
+    private val _browseData = MutableLiveData<MutableList<Product>>()
+    val browseData: LiveData<MutableList<Product>> get() = _browseData
 
     private val _cartItems = MutableLiveData<MutableList<CartItem>>()
     val cartItems: LiveData<MutableList<CartItem>> get() = _cartItems
@@ -41,7 +45,11 @@ class CartViewModel : ViewModel() {
     val address: LiveData<UserAddress> get() = _address
 
     init {
+        _browseData.value = getUnfilteredData()
         resetOrder()
+
+        // TODO: This is just for testing purposes. Should be removed
+        addRandomItems(5)
     }
 
     fun getItemQuantity(cartItem: CartItem): Int {
@@ -59,14 +67,24 @@ class CartViewModel : ViewModel() {
         return cartSize
     }
 
-    fun getProduct(productId: Long) = DataSource.products.firstOrNull { it.id == productId }
+    fun getProduct(productId: Long) = browseData.value?.firstOrNull { it.id == productId }
 
-    fun getBrowseData(): List<Product> {
-        return DataSource.products.shuffled()
+    fun searchProducts(query: String) {
+        val unfilteredData: MutableList<Product> = getUnfilteredData()
+
+        if (query.isEmpty()) {
+            _browseData.value = unfilteredData
+        } else {
+            val filterList = unfilteredData.filter {
+                it.name.lowercase(Locale.ROOT).contains(query)
+            }
+            filterList.sortedBy { it.price }
+            _browseData.value = filterList as MutableList<Product>?
+        }
     }
 
-    fun getFavourites(): List<Product> {
-        return DataSource.products.filter { it.isFavourite }
+    fun getFavourites(): MutableList<Product> {
+        return browseData.value?.filter { it.isFavourite } as MutableList<Product>
     }
 
     fun checkoutButtonVisibility(): Int {
@@ -122,6 +140,10 @@ class CartViewModel : ViewModel() {
         resetOrder()
     }
 
+    private fun getUnfilteredData(): MutableList<Product> {
+        return DataSource.products.shuffled() as MutableList<Product>
+    }
+
     private fun resetOrder() {
         _cartItems.value = mutableListOf<CartItem>()
         _subtotalPrice.value = 0.0
@@ -130,9 +152,6 @@ class CartViewModel : ViewModel() {
         _address.value = UserAddress(
             "George Washington St.", "19A", "91732", "Dry Creek"
         )
-
-        // TODO: Remove this
-        addRandomItems(5)
     }
 
     private fun updatePrice() {
@@ -161,7 +180,7 @@ class CartViewModel : ViewModel() {
 
     private fun addRandomItems(times: Int) {
         repeat(times) {
-            val product = DataSource.products.firstOrNull { it.id == (1..21).random().toLong() }
+            val product = browseData.value?.firstOrNull { it.id == (1..21).random().toLong() }
             if (product != null) addItem(CartItem(product, (1..3).random()))
         }
     }

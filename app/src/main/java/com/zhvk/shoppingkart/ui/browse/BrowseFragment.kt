@@ -12,7 +12,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentBrowseBinding
-import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.ui.BrowseProductClickListener
 import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
 import com.zhvk.shoppingkart.ui.CartViewModel
@@ -53,7 +52,6 @@ class BrowseFragment : Fragment() {
             )
             findNavController().navigate(action)
         })
-        productsAdapter.setData(sharedViewModel.getBrowseData() as MutableList<Product>)
 
         binding.apply {
             viewModel = sharedViewModel
@@ -67,7 +65,7 @@ class BrowseFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(searchString: String): Boolean {
-                    productsAdapter.filter.filter(searchString)
+                    sharedViewModel.searchProducts(searchString)
                     return false
                 }
             })
@@ -79,7 +77,7 @@ class BrowseFragment : Fragment() {
             goToFavouritesButton.setOnClickListener { navigateToFavouritesFragment() }
         }
 
-//        observeSearchResults()
+        observeBrowseData()
     }
 
     override fun onDestroyView() {
@@ -87,29 +85,24 @@ class BrowseFragment : Fragment() {
         _binding = null
     }
 
-//    fun observeSearchResults() {
-//        productsAdapter.unfilteredList.ob
-//    }
-//
-//    fun handleSearchResultsUi(hasResults: Boolean) {
-//        binding.apply {
-//            if (hasResults) {
-//                productsHeader.visibility = View.VISIBLE
-//                productsHeaderNumber.visibility = View.VISIBLE
-//                productsShowLess.visibility = View.VISIBLE
-//                recyclerView.visibility = View.VISIBLE
-//                bottomSheet.visibility = View.VISIBLE
-//                noSearchResultsView.visibility = View.GONE
-//            } else {
-//                productsHeader.visibility = View.GONE
-//                productsHeaderNumber.visibility = View.GONE
-//                productsShowLess.visibility = View.GONE
-//                recyclerView.visibility = View.GONE
-//                bottomSheet.visibility = View.GONE
-//                noSearchResultsView.visibility = View.VISIBLE
-//            }
-//        }
-//    }
+    fun observeBrowseData() {
+        sharedViewModel.browseData.observe(viewLifecycleOwner) { browseProducts ->
+            productsAdapter.setData(browseProducts)
+            handleSearchResultsUi(browseProducts.size != 0)
+        }
+    }
+
+    fun handleSearchResultsUi(hasResults: Boolean) {
+        binding.apply {
+            if (hasResults) {
+                recyclerView.visibility = View.VISIBLE
+                noSearchResultsView.visibility = View.GONE
+            } else {
+                recyclerView.visibility = View.GONE
+                noSearchResultsView.visibility = View.VISIBLE
+            }
+        }
+    }
 
     fun navigateToCheckout() {
         val action = BrowseFragmentDirections.actionBrowseFragmentToSummaryFragment()

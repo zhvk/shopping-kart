@@ -27,7 +27,7 @@ object DataSource {
         )
     )
 
-    val products: List<Product> = listOf(
+    val products: MutableList<Product> = mutableListOf(
         Product(
             id = 1,
             name = "SoundLux Pro",
