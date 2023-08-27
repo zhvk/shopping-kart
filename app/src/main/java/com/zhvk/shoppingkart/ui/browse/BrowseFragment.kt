@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentBrowseBinding
+import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.ui.BrowseProductClickListener
 import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
 import com.zhvk.shoppingkart.ui.CartViewModel
@@ -25,6 +27,8 @@ class BrowseFragment : Fragment() {
     private var _binding: FragmentBrowseBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var productsAdapter: BrowseProductsAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,33 +42,74 @@ class BrowseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        val tutorialFinished = sharedPref?.getBoolean(getString(R.string.tutorial_preference_key), false)
+        val tutorialFinished =
+            sharedPref?.getBoolean(getString(R.string.tutorial_preference_key), false)
 
         if (tutorialFinished == false) navigateToTutorial()
+
+        productsAdapter = BrowseProductsAdapter(BrowseProductClickListener { productId ->
+            val action = BrowseFragmentDirections.actionBrowseFragmentToProductFragment(
+                productId = productId
+            )
+            findNavController().navigate(action)
+        })
+        productsAdapter.setData(sharedViewModel.getBrowseData() as MutableList<Product>)
 
         binding.apply {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
             fragment = this@BrowseFragment
 
-            recyclerView.adapter = BrowseProductsAdapter(sharedViewModel.getBrowseData(),
-                BrowseProductClickListener { productId ->
-                    val action = BrowseFragmentDirections.actionBrowseFragmentToProductFragment(
-                        productId = productId
-                    )
-                    findNavController().navigate(action)
-                })
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                android.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(p0: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(searchString: String): Boolean {
+                    productsAdapter.filter.filter(searchString)
+                    return false
+                }
+            })
+
+            recyclerView.adapter = productsAdapter
             // TODO: Should be false with the new features
             recyclerView.setHasFixedSize(false)
 
             goToFavouritesButton.setOnClickListener { navigateToFavouritesFragment() }
         }
+
+//        observeSearchResults()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+//    fun observeSearchResults() {
+//        productsAdapter.unfilteredList.ob
+//    }
+//
+//    fun handleSearchResultsUi(hasResults: Boolean) {
+//        binding.apply {
+//            if (hasResults) {
+//                productsHeader.visibility = View.VISIBLE
+//                productsHeaderNumber.visibility = View.VISIBLE
+//                productsShowLess.visibility = View.VISIBLE
+//                recyclerView.visibility = View.VISIBLE
+//                bottomSheet.visibility = View.VISIBLE
+//                noSearchResultsView.visibility = View.GONE
+//            } else {
+//                productsHeader.visibility = View.GONE
+//                productsHeaderNumber.visibility = View.GONE
+//                productsShowLess.visibility = View.GONE
+//                recyclerView.visibility = View.GONE
+//                bottomSheet.visibility = View.GONE
+//                noSearchResultsView.visibility = View.VISIBLE
+//            }
+//        }
+//    }
 
     fun navigateToCheckout() {
         val action = BrowseFragmentDirections.actionBrowseFragmentToSummaryFragment()

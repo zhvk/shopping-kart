@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentFavouritesBinding
+import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.ui.BrowseProductClickListener
 import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
 import com.zhvk.shoppingkart.ui.CartViewModel
@@ -20,6 +21,8 @@ class FavouritesFragment : Fragment() {
 
     private var _binding: FragmentFavouritesBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var favouritesAdapter: BrowseProductsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,18 +36,20 @@ class FavouritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        favouritesAdapter = BrowseProductsAdapter(BrowseProductClickListener { productId ->
+            val action =
+                FavouritesFragmentDirections.actionFavouritesFragmentToProductFragment(
+                    productId = productId
+                )
+            findNavController().navigate(action)
+        })
+        favouritesAdapter.setData(sharedViewModel.getFavourites() as MutableList<Product>)
+
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
 
-            recyclerView.adapter = BrowseProductsAdapter(sharedViewModel.getFavourites(),
-                BrowseProductClickListener { productId ->
-                    val action =
-                        FavouritesFragmentDirections.actionFavouritesFragmentToProductFragment(
-                            productId = productId
-                        )
-                    findNavController().navigate(action)
-                })
+            recyclerView.adapter = favouritesAdapter
             recyclerView.setHasFixedSize(true)
         }
     }

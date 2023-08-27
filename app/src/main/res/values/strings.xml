@@ -39,4 +39,6 @@
     <string name="order_success_header">Order success</string>
     <string name="order_success_info">Your package will be sent to your address. Thank you for your order!</string>
     <string name="continue_string">Continue</string>
+    <string name="search_hint">Search for products</string>
+    <string name="search_no_results">We are sorry, we could not find any results for your search</string>
 </resources>

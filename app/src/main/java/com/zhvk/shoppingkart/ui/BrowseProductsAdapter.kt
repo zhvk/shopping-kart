@@ -2,6 +2,8 @@ package com.zhvk.shoppingkart.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -14,10 +16,33 @@ import com.zhvk.shoppingkart.model.Product
  * Adapter for Products which are shown on the BrowseFragment and on the FavouritesFragment
  */
 class BrowseProductsAdapter(
-    private val dataSet: List<Product>,
     private val clickListener: BrowseProductClickListener
-) :
-    ListAdapter<Product, BrowseProductsAdapter.BrowseProductViewHolder>(DiffCallback) {
+) : ListAdapter<Product, BrowseProductsAdapter.BrowseProductViewHolder>(DiffCallback), Filterable {
+
+    var unfilteredList = mutableListOf<Product>()
+
+    private val customFilter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList = mutableListOf<Product>()
+            if (constraint.isNullOrEmpty()) {
+                filteredList.addAll(unfilteredList)
+            } else {
+                for (item in unfilteredList) {
+                    if (item.name.lowercase().startsWith(constraint.toString().lowercase())) {
+                        filteredList.add(item)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, filterResults: FilterResults?) {
+            submitList(filterResults?.values as MutableList<Product>)
+        }
+
+    }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
@@ -47,8 +72,17 @@ class BrowseProductsAdapter(
     }
 
     override fun onBindViewHolder(holder: BrowseProductViewHolder, position: Int) {
-        val item = dataSet[position]
+        val item = getItem(position)
         holder.bind(item, clickListener)
+    }
+
+    override fun getFilter(): Filter {
+        return customFilter
+    }
+
+    fun setData(list: MutableList<Product>) {
+        this.unfilteredList = list
+        submitList(list)
     }
 
     class BrowseProductViewHolder(
