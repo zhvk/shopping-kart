@@ -87,7 +87,7 @@ class BrowseFragment : Fragment() {
 
     fun observeBrowseData() {
         sharedViewModel.browseData.observe(viewLifecycleOwner) { browseProducts ->
-            productsAdapter.setData(browseProducts)
+            productsAdapter.submitList(browseProducts)
             handleSearchResultsUi(browseProducts.size != 0)
         }
     }

@@ -43,7 +43,7 @@ class FavouritesFragment : Fragment() {
                 )
             findNavController().navigate(action)
         })
-        favouritesAdapter.setData(sharedViewModel.getFavourites() as MutableList<Product>)
+        favouritesAdapter.submitList(sharedViewModel.getFavourites())
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
