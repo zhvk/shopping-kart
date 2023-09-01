@@ -120,16 +120,30 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/shop_subtitle" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/filter_recycler"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/shop_description"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_filter" />
+
                 <TextView
                     android:id="@+id/products_header"
                     style="@style/TextAppearance.ShoppingKart.Header1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
                     android:text="@string/products_header"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/shop_description" />
+                    app:layout_constraintTop_toBottomOf="@id/filter_recycler" />
 
                 <TextView
                     android:id="@+id/products_header_number"

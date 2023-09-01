@@ -10,6 +10,7 @@ import com.zhvk.shoppingkart.model.CartItem
 import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.model.UserAddress
 import com.zhvk.shoppingkart.model.data.DataSource
+import com.zhvk.shoppingkart.model.data.Filter
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -22,6 +23,14 @@ class CartViewModel : ViewModel() {
 
     private val _browseData = MutableLiveData<MutableList<Product>>()
     val browseData: LiveData<MutableList<Product>> get() = _browseData
+
+    private val _filters = MutableLiveData<MutableSet<Filter>>()
+    val filters: LiveData<MutableSet<Filter>> get() = _filters
+
+    private var searchQuery: String = ""
+
+    private val _selectedFilter = MutableLiveData<Filter?>()
+    val selectedFilter: LiveData<Filter?> get() = _selectedFilter
 
     private val _cartItems = MutableLiveData<MutableList<CartItem>>()
     val cartItems: LiveData<MutableList<CartItem>> get() = _cartItems
@@ -45,7 +54,8 @@ class CartViewModel : ViewModel() {
     val address: LiveData<UserAddress> get() = _address
 
     init {
-        _browseData.value = getUnfilteredData()
+        _browseData.value = getUnfilteredData().shuffled() as MutableList<Product>
+        _filters.value = createFilters()
         resetOrder()
 
         // TODO: This is just for testing purposes. Should be removed
@@ -69,18 +79,26 @@ class CartViewModel : ViewModel() {
 
     fun getProduct(productId: Long) = browseData.value?.firstOrNull { it.id == productId }
 
-    fun searchProducts(query: String) {
-        val unfilteredData: MutableList<Product> = getUnfilteredData()
+    fun selectFilter(filter: Filter) {
+        val previouslySelectedFilter = _selectedFilter.value
 
-        if (query.isEmpty()) {
-            _browseData.value = unfilteredData
+        if (filter == previouslySelectedFilter) {
+            _selectedFilter.value = null
+            for (f: Filter in _filters.value!!) f.isSelected = false
         } else {
-            val filterList = unfilteredData.filter {
-                it.name.lowercase(Locale.ROOT).contains(query)
-            }
-            filterList.sortedBy { it.price }
-            _browseData.value = filterList as MutableList<Product>?
+            _selectedFilter.value = filter
+            for (f: Filter in _filters.value!!) f.isSelected = f.name == filter.name
         }
+
+        searchAndFilter()
+    }
+
+    fun searchProducts(query: String) {
+        searchQuery = query
+        if (searchQuery.isEmpty())
+            _browseData.value = getUnfilteredData()
+        else
+            searchAndFilter()
     }
 
     fun getFavourites(): MutableList<Product> {
@@ -141,7 +159,32 @@ class CartViewModel : ViewModel() {
     }
 
     private fun getUnfilteredData(): MutableList<Product> {
-        return DataSource.products.shuffled() as MutableList<Product>
+        return DataSource.products
+    }
+
+    private fun createFilters(): MutableSet<Filter> {
+        val filters: MutableSet<Filter> = mutableSetOf()
+        for (product: Product in getUnfilteredData()) {
+            filters.add(Filter(product.category))
+        }
+        return filters
+    }
+
+    private fun searchAndFilter() {
+        val unfilteredData: MutableList<Product> = getUnfilteredData()
+        val selectedFilter = _selectedFilter.value
+
+        if (searchQuery.isEmpty() && selectedFilter == null) {
+            _browseData.value = unfilteredData
+        } else {
+            var filteredList = unfilteredData.filter { it.name.lowercase(Locale.ROOT).contains(searchQuery) }
+
+            if (selectedFilter != null)
+                filteredList = filteredList.filter { it.category == selectedFilter.name }
+
+            filteredList.sortedBy { it.price }
+            _browseData.value = filteredList as MutableList<Product>?
+        }
     }
 
     private fun resetOrder() {

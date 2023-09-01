@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentFavouritesBinding
-import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.ui.BrowseProductClickListener
 import com.zhvk.shoppingkart.ui.BrowseProductsAdapter
 import com.zhvk.shoppingkart.ui.CartViewModel

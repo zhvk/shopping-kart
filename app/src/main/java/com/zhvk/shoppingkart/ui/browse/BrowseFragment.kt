@@ -27,6 +27,7 @@ class BrowseFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var productsAdapter: BrowseProductsAdapter
+    private lateinit var filterAdapter: FilterAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,6 +53,11 @@ class BrowseFragment : Fragment() {
             )
             findNavController().navigate(action)
         })
+        filterAdapter = FilterAdapter {
+            sharedViewModel.selectFilter(it)
+            filterAdapter.notifyDataSetChanged()
+        }
+        filterAdapter.submitList(sharedViewModel.filters.value?.toList())
 
         binding.apply {
             viewModel = sharedViewModel
@@ -70,6 +76,8 @@ class BrowseFragment : Fragment() {
                 }
             })
 
+
+            filterRecycler.adapter = filterAdapter
             recyclerView.adapter = productsAdapter
             // TODO: Should be false with the new features
             recyclerView.setHasFixedSize(false)

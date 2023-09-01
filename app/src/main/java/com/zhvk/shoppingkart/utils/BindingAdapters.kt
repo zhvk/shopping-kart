@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart
+package com.zhvk.shoppingkart.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -11,6 +11,12 @@ fun bindBrowseRecyclerView(recyclerView: RecyclerView, data: List<Product>?) {
     val adapter = recyclerView.adapter as BrowseProductsAdapter
     adapter.submitList(data)
 }
+
+//@BindingAdapter("observeData")
+//fun bindBrowseRecyclerView(recyclerView: RecyclerView, data: Set<Filter>?) {
+//    val adapter = recyclerView.adapter as FilterAdapter
+//    adapter.submitList(data?.toList())
+//}
 
 /*@BindingAdapter("isFavourite")
 fun setFavourite(imageButton: ImageButton, isFavourite: Boolean) {
