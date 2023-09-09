@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "911255888652",
+    "project_id": "shopping-kart-dfcc0",
+    "storage_bucket": "shopping-kart-dfcc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911255888652:android:ead2d74434e57af5d19f29",
+        "android_client_info": {
+          "package_name": "com.zhvk.shoppingkart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmmBtyooG0WlfGorBS_of8sDNy7_Of6I8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
