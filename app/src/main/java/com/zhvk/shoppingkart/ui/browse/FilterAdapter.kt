@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.ItemFilterBinding
-import com.zhvk.shoppingkart.model.data.Filter
+import com.zhvk.shoppingkart.model.Filter
 
 class FilterAdapter(
     private val onItemClicked: (Filter) -> Unit

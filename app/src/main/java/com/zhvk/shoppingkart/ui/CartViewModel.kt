@@ -10,7 +10,7 @@ import com.zhvk.shoppingkart.model.CartItem
 import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.model.UserAddress
 import com.zhvk.shoppingkart.model.data.DataSource
-import com.zhvk.shoppingkart.model.data.Filter
+import com.zhvk.shoppingkart.model.Filter
 import java.text.NumberFormat
 import java.util.Locale
 
