@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.FragmentTutorialBinding
-import com.zhvk.shoppingkart.model.data.DataSource
+import com.zhvk.shoppingkart.data.DataSource
 
 class TutorialFragment : Fragment() {
 

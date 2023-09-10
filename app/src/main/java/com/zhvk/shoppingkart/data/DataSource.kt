@@ -1,4 +1,4 @@
-package com.zhvk.shoppingkart.model.data
+package com.zhvk.shoppingkart.data
 
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.model.Product

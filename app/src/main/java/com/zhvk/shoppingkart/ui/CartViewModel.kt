@@ -6,10 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.zhvk.shoppingkart.data.AppRepository
 import com.zhvk.shoppingkart.model.CartItem
 import com.zhvk.shoppingkart.model.Product
 import com.zhvk.shoppingkart.model.UserAddress
-import com.zhvk.shoppingkart.model.data.DataSource
 import com.zhvk.shoppingkart.model.Filter
 import java.text.NumberFormat
 import java.util.Locale
@@ -20,6 +20,8 @@ private const val TAG = "CartViewModel"
  * Shared ViewModel that handles all Cart business logic
  */
 class CartViewModel : ViewModel() {
+
+    private val repository = AppRepository()
 
     private val _browseData = MutableLiveData<MutableList<Product>>()
     val browseData: LiveData<MutableList<Product>> get() = _browseData
@@ -159,7 +161,7 @@ class CartViewModel : ViewModel() {
     }
 
     private fun getUnfilteredData(): MutableList<Product> {
-        return DataSource.products
+        return repository.getProducts()
     }
 
     private fun createFilters(): MutableSet<Filter> {
