@@ -28,6 +28,61 @@ object DataSource {
     )
 
     val products: MutableList<Product> = mutableListOf(
+        Product(    // 1
+            id = 7,
+            name = "HiFiClouds 3000",
+            category = "Headphones",
+            type = "On-ear",
+            description = "These on-ear headphones offer a cloud-like comfort while delivering crystal-clear sound, perfect for long listening sessions.",
+            price = 279.99,
+            isAvailable = true,
+            isFavourite = false,
+            imageResourceIds = listOf(R.drawable.headphones9)
+        ),
+        Product(    // 2
+            id = 18,
+            name = "OmniMic Pro",
+            category = "Microphone",
+            type = "Omnidirectional Condenser microphone",
+            description = "This omnidirectional condenser microphone is perfect for capturing a room's ambience or recording group vocals. It features a wide frequency response and low self-noise, making it a great choice for professional recordings.",
+            price = 249.99,
+            isAvailable = true,
+            isFavourite = true,
+            imageResourceIds = listOf(R.drawable.mic4_1, R.drawable.mic4_2)
+        ),
+        Product(    // 3
+            id = 13,
+            name = "MiniWave Elite",
+            category = "Amplifier",
+            type = "Mini Amp",
+            description = "Don't let its small size fool you, this mini amplifier delivers big sound in a compact package. The sleek and minimalist design is perfect for small spaces, while the advanced circuitry ensures clear and dynamic sound. It's perfect for powering bookshelf speakers, and its portability makes it great for on-the-go listening.",
+            price = 129.00,
+            isAvailable = false,
+            isFavourite = false,
+            imageResourceIds = listOf(R.drawable.amp3)
+        ),
+        Product(    // 4
+            id = 11,
+            name = "StellarX Pro",
+            category = "Amplifier",
+            type = "Regular",
+            description = "This high-end amplifier delivers rich and detailed sound, with plenty of power to drive even the most demanding speakers. The sleek and modern design is sure to impress any audiophile.",
+            price = 639.99,
+            isAvailable = true,
+            isFavourite = false,
+            imageResourceIds = listOf(R.drawable.amp1_1, R.drawable.amp1_2)
+        ),
+        Product(    // 5
+            id = 16,
+            name = "UltraVoice Condenser Mic",
+            category = "Microphone",
+            type = "Cardioid microphone",
+            description = "This cardioid condenser microphone is perfect for capturing clear and detailed vocals, with a wide frequency response and high sensitivity. The sleek and modern design looks great in any recording studio or home setup.",
+            price = 199.00,
+            isAvailable = false,
+            isFavourite = false,
+            imageResourceIds = listOf(R.drawable.mic2)
+        ),
         Product(
             id = 1,
             name = "SoundLux Pro",
@@ -38,28 +93,6 @@ object DataSource {
             isAvailable = true,
             isFavourite = true,
             imageResourceIds = listOf(R.drawable.headphones1_1, R.drawable.headphones1_2)
-        ),
-        Product(
-            id = 2,
-            name = "EchoHear Elite",
-            category = "Headphones",
-            type = "Wireless",
-            description = "These wireless headphones boast a sleek and sophisticated design, with rich, balanced sound that will transport you to a different world.",
-            price = 179.99,
-            isAvailable = true,
-            isFavourite = false,
-            imageResourceIds = listOf(R.drawable.headphones2)
-        ),
-        Product(
-            id = 3,
-            name = "SonicZone 9000",
-            category = "Headphones",
-            type = "Wireless",
-            description = "These wireless headphones pack a punch with deep bass and crisp highs, all while being comfortable to wear for extended periods of time.",
-            price = 299.99,
-            isAvailable = false,
-            isFavourite = false,
-            imageResourceIds = listOf(R.drawable.headphones3)
         ),
         Product(
             id = 4,
@@ -99,17 +132,6 @@ object DataSource {
             imageResourceIds = listOf(R.drawable.headphones3, R.drawable.headphones6)
         ),
         Product(
-            id = 7,
-            name = "HiFiClouds 3000",
-            category = "Headphones",
-            type = "On-ear",
-            description = "These on-ear headphones offer a cloud-like comfort while delivering crystal-clear sound, perfect for long listening sessions.",
-            price = 279.99,
-            isAvailable = true,
-            isFavourite = false,
-            imageResourceIds = listOf(R.drawable.headphones9)
-        ),
-        Product(
             id = 8,
             name = "ProSurge 800",
             category = "Headphones",
@@ -147,17 +169,6 @@ object DataSource {
             )
         ),
         Product(
-            id = 11,
-            name = "StellarX Pro",
-            category = "Amplifier",
-            type = "Regular",
-            description = "This high-end amplifier delivers rich and detailed sound, with plenty of power to drive even the most demanding speakers. The sleek and modern design is sure to impress any audiophile.",
-            price = 639.99,
-            isAvailable = true,
-            isFavourite = false,
-            imageResourceIds = listOf(R.drawable.amp1_1, R.drawable.amp1_2)
-        ),
-        Product(
             id = 12,
             name = "PowerMax Ultra",
             category = "Amplifier",
@@ -167,17 +178,6 @@ object DataSource {
             isAvailable = true,
             isFavourite = false,
             imageResourceIds = listOf(R.drawable.amp2)
-        ),
-        Product(
-            id = 13,
-            name = "MiniWave Elite",
-            category = "Amplifier",
-            type = "Mini Amp",
-            description = "Don't let its small size fool you, this mini amplifier delivers big sound in a compact package. The sleek and minimalist design is perfect for small spaces, while the advanced circuitry ensures clear and dynamic sound. It's perfect for powering bookshelf speakers, and its portability makes it great for on-the-go listening.",
-            price = 129.00,
-            isAvailable = false,
-            isFavourite = false,
-            imageResourceIds = listOf(R.drawable.amp3)
         ),
         Product(
             id = 14,
@@ -191,6 +191,17 @@ object DataSource {
             imageResourceIds = listOf(R.drawable.amp4)
         ),
         Product(
+            id = 3,
+            name = "SonicZone 9000",
+            category = "Headphones",
+            type = "Wireless",
+            description = "These wireless headphones pack a punch with deep bass and crisp highs, all while being comfortable to wear for extended periods of time.",
+            price = 299.99,
+            isAvailable = false,
+            isFavourite = false,
+            imageResourceIds = listOf(R.drawable.headphones3)
+        ),
+        Product(
             id = 15,
             name = "EchoMic Pro",
             category = "Microphone",
@@ -202,17 +213,6 @@ object DataSource {
             imageResourceIds = listOf(R.drawable.mic1_1, R.drawable.mic1_2)
         ),
         Product(
-            id = 16,
-            name = "UltraVoice Condenser Mic",
-            category = "Microphone",
-            type = "Cardioid microphone",
-            description = "This cardioid condenser microphone is perfect for capturing clear and detailed vocals, with a wide frequency response and high sensitivity. The sleek and modern design looks great in any recording studio or home setup.",
-            price = 199.00,
-            isAvailable = false,
-            isFavourite = false,
-            imageResourceIds = listOf(R.drawable.mic2)
-        ),
-        Product(
             id = 17,
             name = "PureSound Ribbon Mic",
             category = "Microphone",
@@ -222,17 +222,6 @@ object DataSource {
             isAvailable = true,
             isFavourite = false,
             imageResourceIds = listOf(R.drawable.mic3)
-        ),
-        Product(
-            id = 18,
-            name = "OmniMic Pro",
-            category = "Microphone",
-            type = "Omnidirectional Condenser microphone",
-            description = "This omnidirectional condenser microphone is perfect for capturing a room's ambience or recording group vocals. It features a wide frequency response and low self-noise, making it a great choice for professional recordings.",
-            price = 249.99,
-            isAvailable = true,
-            isFavourite = true,
-            imageResourceIds = listOf(R.drawable.mic4_1, R.drawable.mic4_2)
         ),
         Product(
             id = 19,
@@ -266,6 +255,17 @@ object DataSource {
             isAvailable = true,
             isFavourite = true,
             imageResourceIds = listOf(R.drawable.speaker3)
-        )
+        ),
+        Product(
+            id = 2,
+            name = "EchoHear Elite",
+            category = "Headphones",
+            type = "Wireless",
+            description = "These wireless headphones boast a sleek and sophisticated design, with rich, balanced sound that will transport you to a different world.",
+            price = 179.99,
+            isAvailable = true,
+            isFavourite = false,
+            imageResourceIds = listOf(R.drawable.headphones2)
+        ),
     )
 }

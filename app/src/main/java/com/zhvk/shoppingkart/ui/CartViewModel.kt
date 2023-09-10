@@ -56,7 +56,7 @@ class CartViewModel : ViewModel() {
     val address: LiveData<UserAddress> get() = _address
 
     init {
-        _browseData.value = getUnfilteredData().shuffled() as MutableList<Product>
+        _browseData.value = getUnfilteredData()//.shuffled() as MutableList<Product>
         _filters.value = createFilters()
         resetOrder()
 
