@@ -1,12 +1,17 @@
 package com.zhvk.shoppingkart.ui.summary
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -25,6 +30,12 @@ class SummaryFragment : Fragment() {
 
     private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
+
+    // TODO: This ActivityResultLauncher is used only for demonstration purposes and  should be removed
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            navigateToSuccessFragment()
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,7 +65,7 @@ class SummaryFragment : Fragment() {
         _binding = null
     }
 
-    // TODO: Implement picking a location
+    // TODO: Implement picking a location HERE
     fun showLocationPickerDialog() {
         val dialog = LocationDialog()
         dialog.show(parentFragmentManager, "locationFragmentDialog")
@@ -83,7 +94,7 @@ class SummaryFragment : Fragment() {
     }
 
     // Method that sends order details via email.
-    fun sendOrderViaEmail() {
+    fun sendOrderViaEmail(): Boolean {
         val emailBody = getString(
             R.string.order_email_body,
             sharedViewModel.getOrderString(),
@@ -96,9 +107,10 @@ class SummaryFragment : Fragment() {
             putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_details))
             putExtra(Intent.EXTRA_TEXT, emailBody)
         }
-        if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
-            startActivity(intent)
-        }
+
+        startForResult.launch(intent)
+
+        return true
     }
 
     fun navigateToSuccessFragment() {

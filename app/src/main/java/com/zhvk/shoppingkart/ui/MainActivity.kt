@@ -7,6 +7,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.zhvk.shoppingkart.R
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +19,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        AppCenter.start(
+            application,
+            "\"1b385950-78f9-4a11-a1ef-6e7744b21946\"",
+            Analytics::class.java,
+            Crashes::class.java
+        )
+
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -24,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: Should be removed, this code is here just for testing purposes
         getPreferences(Context.MODE_PRIVATE).edit().clear().apply()
+
+        Analytics.trackEvent("App started")
     }
 
     override fun onSupportNavigateUp(): Boolean {

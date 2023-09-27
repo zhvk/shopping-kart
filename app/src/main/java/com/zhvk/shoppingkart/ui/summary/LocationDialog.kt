@@ -12,7 +12,7 @@ import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.DialogLocationEntryBinding
 import com.zhvk.shoppingkart.ui.CartViewModel
 
-// TODO
+// TODO: HERE
 class LocationDialog : DialogFragment() {
 
     private val sharedViewModel: CartViewModel by activityViewModels()
