@@ -1,11 +1,8 @@
 package com.zhvk.shoppingkart.ui.summary
 
-import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +54,11 @@ class SummaryFragment : Fragment() {
             recyclerView.adapter = SummaryProductAdapter(sharedViewModel)
 
             actionCancelOrder.setOnClickListener { showCancelOrderDialog() }
+
+            sharedViewModel.address.observe(viewLifecycleOwner) { address ->
+                deliveryLocationAddressNotSetLabel.visibility =
+                    if (address.isSet()) View.GONE else View.VISIBLE
+            }
         }
     }
 
@@ -65,7 +67,6 @@ class SummaryFragment : Fragment() {
         _binding = null
     }
 
-    // TODO: Implement picking a location HERE
     fun showLocationPickerDialog() {
         val dialog = LocationDialog()
         dialog.show(parentFragmentManager, "locationFragmentDialog")
@@ -91,6 +92,13 @@ class SummaryFragment : Fragment() {
             ).show()
         }
         builder.show()
+    }
+
+    fun attemptToBuy() {
+        if (sharedViewModel.address.value?.isSet() == true)
+            sendOrderViaEmail()
+        else
+            Toast.makeText(requireContext(), "Please fill your address", Toast.LENGTH_LONG).show()
     }
 
     // Method that sends order details via email.

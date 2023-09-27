@@ -10,24 +10,15 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.zhvk.shoppingkart.R
 import com.zhvk.shoppingkart.databinding.DialogLocationEntryBinding
+import com.zhvk.shoppingkart.model.UserAddress
 import com.zhvk.shoppingkart.ui.CartViewModel
 
-// TODO: HERE
 class LocationDialog : DialogFragment() {
 
     private val sharedViewModel: CartViewModel by activityViewModels()
 
     private var _binding: DialogLocationEntryBinding? = null
     private val binding get() = _binding!!
-
-    /*override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = DataBindingUtil.inflate(layoutInflater, R.layout.dialog_location_entry, container, false)
-        return binding.root
-    }*/
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding =
@@ -43,7 +34,7 @@ class LocationDialog : DialogFragment() {
             dialog.cancel()
         }
 
-        return builder.create();
+        return builder.create()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,14 +46,20 @@ class LocationDialog : DialogFragment() {
         }
     }
 
-    fun setAddress() {
-        /*binding.viewModel?.setAddress(
-                UserAddress(
-                    view?.findViewById<TextInputLayout>(R.id.location_street_name)?.editText?.text.toString(),
-                    view?.findViewById<TextInputLayout>(R.id.location_street_number)?.editText?.text.toString(),
-                    view?.findViewById<TextInputLayout>(R.id.location_postal_code)?.editText?.text.toString(),
-                    view?.findViewById<TextInputLayout>(R.id.location_city)?.editText?.text.toString()
-                )
-            )*/
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setAddress() {
+        with(binding) {
+            val address = UserAddress(
+                streetName = locationStreetName.editText?.text.toString(),
+                streetNumber = locationStreetNumber.editText?.text.toString(),
+                postalCode = locationPostalCode.editText?.text.toString(),
+                city = locationCity.editText?.text.toString(),
+            )
+            sharedViewModel.setAddress(address)
+        }
     }
 }

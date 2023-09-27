@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.zhvk.shoppingkart.ui.CartViewModel" />
@@ -19,11 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:text=""
             android:layout_marginVertical="4dp"
             android:hint="@string/hint_street_name"
             app:startIconDrawable="@drawable/ic_round_signpost">
-<!--            android:text="@={viewModel.streetName}" -->
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

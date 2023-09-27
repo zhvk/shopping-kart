@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         //  presentation purposes.
         AppCenter.start(
             application,
-            "\"1b385950-78f9-4a11-a1ef-6e7744b21946\"",
+            "1b385950-78f9-4a11-a1ef-6e7744b21946",
             Analytics::class.java,
             Crashes::class.java
         )
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         // TODO: Should be removed, this code is here just for testing purposes
         getPreferences(Context.MODE_PRIVATE).edit().clear().apply()
 
-        Analytics.trackEvent("App started")
+        Analytics.trackEvent("App started 2")
     }
 
     override fun onSupportNavigateUp(): Boolean {

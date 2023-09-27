@@ -118,7 +118,31 @@
                     app:layout_constraintTop_toBottomOf="@id/delivery_location_label_1"
                     tools:text="91732, Dry Creek" />
 
+                <!-- TODO: This was a quick solution, don't judge :) -->
+                <FrameLayout
+                    android:id="@+id/delivery_location_address_not_set_label"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/delivery_location_label_2"
+                    app:layout_constraintEnd_toStartOf="@id/delivery_location_button_icon"
+                    app:layout_constraintStart_toStartOf="@id/delivery_location_label_1"
+                    app:layout_constraintTop_toTopOf="@id/delivery_location_label_1">
+
+                    <TextView
+                        style="@style/TextAppearance.ShoppingKart.NormalText.Light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|start"
+                        android:layout_marginStart="16dp"
+                        android:text="Address not set"
+                        app:layout_constraintStart_toEndOf="@id/delivery_location_image"
+                        app:layout_constraintTop_toTopOf="@id/delivery_location_image" />
+
+                </FrameLayout>
+
                 <ImageView
+                    android:id="@+id/delivery_location_button_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_round_navigate_next"
@@ -135,20 +159,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:visibility="gone"
                 android:layout_marginTop="32dp"
                 android:text="@string/payment_method_header"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/delivery_location_wrapper" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/payment_method_wrapper"
                 android:layout_width="0dp"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:onClick="@{() -> fragment.showPaymentPickerDialog()}"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/payment_method_header">
@@ -286,13 +310,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                android:onClick="@{() -> fragment.sendOrderViaEmail()}"
+                android:onClick="@{() -> fragment.attemptToBuy()}"
                 android:text="@{@string/checkout_with_price(viewModel.totalPrice)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/total_price_label"
                 tools:text="Checkout ($219.00)" />
-<!--            android:onClick="@{() -> fragment.navigateToSuccessFragment()}" -->
+            <!--            android:onClick="@{() -> fragment.navigateToSuccessFragment()}" -->
 
             <TextView
                 android:id="@+id/action_cancel_order"
