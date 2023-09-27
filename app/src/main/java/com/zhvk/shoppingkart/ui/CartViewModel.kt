@@ -60,8 +60,8 @@ class CartViewModel : ViewModel() {
         _filters.value = createFilters()
         resetOrder()
 
-        // TODO: This is just for testing purposes. Should be removed
-        addRandomItems(5)
+        // This is just for testing purposes. Should be removed
+        // addRandomItems(5)
     }
 
     fun getItemQuantity(cartItem: CartItem): Int {
@@ -195,7 +195,7 @@ class CartViewModel : ViewModel() {
         _shippingPrice.value = 0.0
         _totalPrice.value = 0.0
         _address.value = UserAddress(
-            "George Washington St.", "19A", "91732", "Dry Creek"
+            "", "", "", ""
         )
     }
 
