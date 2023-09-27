@@ -1,6 +1,8 @@
 package com.zhvk.shoppingkart.utils
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zhvk.shoppingkart.model.Product
@@ -29,4 +31,10 @@ fun setFavourite(imageButton: ImageButton, isFavourite: Boolean) {
 @BindingAdapter("setImageResource")
 fun setImageResource(imageView: ImageView, imageResource: Int) {
     imageView.setImageResource(imageResource)
+}
+
+@BindingAdapter("observeFavourites")
+fun observeFavourites(textView: TextView, favs: MutableList<Product>) {
+    val visibility = if (favs.size == 0) View.VISIBLE else View.GONE
+    textView.visibility = visibility
 }

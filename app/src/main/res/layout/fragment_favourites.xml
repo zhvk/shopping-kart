@@ -5,6 +5,7 @@
     tools:context=".ui.favourites.FavouritesFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.zhvk.shoppingkart.ui.CartViewModel" />
@@ -34,12 +35,27 @@
                 style="@style/TextAppearance.ShoppingKart.Header1Extra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{Integer.toString(viewModel.getFavourites().size)}"
                 android:layout_marginStart="8dp"
+                android:text="@{Integer.toString(viewModel.getFavourites().size)}"
                 app:layout_constraintBottom_toBottomOf="@id/favourites_header"
                 app:layout_constraintStart_toEndOf="@id/favourites_header"
                 app:layout_constraintTop_toTopOf="@id/favourites_header"
                 tools:text="21" />
+
+            <TextView
+                android:id="@+id/no_favourites_label"
+                style="@style/TextAppearance.ShoppingKart.Header1Extra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:paddingHorizontal="60dp"
+                android:text="You have not added any favourites"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/favourites_header"
+                app:observeFavourites="@{viewModel.getFavourites()}" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
@@ -55,9 +71,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/favourites_header"
+                app:observeData="@{viewModel.getFavourites()}"
                 app:spanCount="2"
                 tools:itemCount="2"
-                app:observeData="@{viewModel.getFavourites()}"
                 tools:listitem="@layout/item_product_browse" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
