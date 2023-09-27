@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // TODO: appSecret is PUBLIC at the moment which you shouldn't do! This is done just for
+        //  presentation purposes.
         AppCenter.start(
             application,
             "\"1b385950-78f9-4a11-a1ef-6e7744b21946\"",
