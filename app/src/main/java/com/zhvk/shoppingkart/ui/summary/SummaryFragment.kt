@@ -95,10 +95,18 @@ class SummaryFragment : Fragment() {
     }
 
     fun attemptToBuy() {
-        if (sharedViewModel.address.value?.isSet() == true)
-            sendOrderViaEmail()
-        else
+        if (sharedViewModel.address.value?.isSet() == false) {
             Toast.makeText(requireContext(), "Please fill your address", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val cartItems = sharedViewModel.cartItems.value
+        if (cartItems == null || cartItems.size < 1) {
+            Toast.makeText(requireContext(), "Your cart is empty", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        sendOrderViaEmail()
     }
 
     // Method that sends order details via email.
